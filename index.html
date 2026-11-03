@@ -20,7 +20,7 @@
     nav{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font:700 1.1rem "Space Grotesk";letter-spacing:.1em}.logo span{color:var(--blue)}
     .links{display:flex;gap:25px;align-items:center;color:#c0ccdc;font-size:.92rem}.links a:hover{color:var(--cyan)}
     .menu{display:none;background:none;border:1px solid var(--line);color:white;border-radius:8px;padding:7px 11px;font-size:1rem}
-    .hero{min-height:690px;display:flex;align-items:center;padding:130px 0 90px;position:relative}
+    .hero{min-height:690px;display:flex;align-items:center;padding:130px 0 90px;position:relative}.hero-layout{display:grid;grid-template-columns:1.35fr .65fr;gap:45px;align-items:center}.profile-frame{width:min(100%,330px);aspect-ratio:1/1;border-radius:28px;overflow:hidden;border:2px solid rgba(101,181,255,.65);box-shadow:0 18px 65px rgba(0,0,0,.4),0 0 35px rgba(65,155,225,.16);justify-self:end}.profile-frame img{width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block}
     .hero:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.45;background:linear-gradient(90deg,#080d18 5%,rgba(8,13,24,.82) 55%,rgba(8,13,24,.5)),url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1800&q=80") center/cover}
     .eyebrow{color:var(--cyan);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
     h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.15}h1{font-size:clamp(2.8rem,7vw,5.5rem);margin:17px 0}h1 span{background:linear-gradient(90deg,var(--blue),var(--cyan));background-clip:text;color:transparent}
@@ -36,7 +36,7 @@
     .contact{background:linear-gradient(135deg,rgba(35,111,190,.15),rgba(34,173,181,.08));border:1px solid var(--line);border-radius:20px;padding:35px}
     footer{padding:30px 0;color:var(--muted);border-top:1px solid var(--line);font-size:.9rem}
     .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.reveal.visible{opacity:1;transform:none}
-    @media(max-width:700px){.links{display:none;position:absolute;top:72px;left:0;right:0;padding:18px 22px 25px;background:#0b1423;flex-direction:column;align-items:flex-start}.links.open{display:flex}.menu{display:block}.hero{min-height:620px}.grid,.interest-grid{grid-template-columns:1fr}section{padding:65px 0}}
+    @media(max-width:700px){.hero-layout{grid-template-columns:1fr;gap:30px}.profile-frame{width:min(76vw,280px);justify-self:start;grid-row:1}.links{display:none;position:absolute;top:72px;left:0;right:0;padding:18px 22px 25px;background:#0b1423;flex-direction:column;align-items:flex-start}.links.open{display:flex}.menu{display:block}.hero{min-height:620px}.grid,.interest-grid{grid-template-columns:1fr}section{padding:65px 0}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{transition:none}}
   </style>
 </head>
@@ -46,11 +46,14 @@
     <div class="links" id="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#interests">Interests</a><a href="#contact">Contact</a></div>
   </nav></header>
   <main>
-    <section class="hero" id="home"><div class="wrap reveal">
-      <div class="eyebrow">Computer Science · Developer · Lifelong Learner</div>
-      <h1>Hi, I'm<br><span>Naveenkumar.</span></h1>
-      <p>I'm a Computer Science postgraduate interested in building useful software, exploring emerging technologies and turning ideas into practical solutions.</p>
-      <div class="actions"><a class="btn primary" href="#projects">Explore my work ↓</a><a class="btn" href="#contact">Get in touch</a></div>
+    <section class="hero" id="home"><div class="wrap reveal hero-layout">
+      <div>
+        <div class="eyebrow">Computer Science · Developer · Lifelong Learner</div>
+        <h1>Hi, I'm<br><span>Naveenkumar.</span></h1>
+        <p>I'm a Computer Science postgraduate interested in building useful software, exploring emerging technologies and turning ideas into practical solutions.</p>
+        <div class="actions"><a class="btn primary" href="#projects">Explore my work ↓</a><a class="btn" href="#contact">Get in touch</a></div>
+      </div>
+      <div class="profile-frame"><img src="naveen-profile.jpg" alt="Naveenkumar's profile portrait"></div>
     </div></section>
     <section id="about"><div class="wrap reveal"><div class="section-label">01 / About</div><h2>Curious mind. Practical approach.</h2>
       <p class="intro">I am pursuing an M.Sc. in Computer Science at Dr. N.G.P. Arts and Science College, Coimbatore, after completing my B.Sc. in Information Technology at Gobi Arts and Science College. I enjoy learning how technology works and applying that knowledge through projects and continuous practice.</p>
