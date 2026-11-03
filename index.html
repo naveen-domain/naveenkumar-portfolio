@@ -163,12 +163,21 @@
     .contact{background:radial-gradient(ellipse at 8% 10%,rgba(120,169,255,.18),transparent 40%),radial-gradient(ellipse at 90% 80%,rgba(103,232,213,.13),transparent 40%),linear-gradient(135deg,rgba(27,43,78,.88),rgba(13,25,48,.94));border-color:rgba(174,190,255,.2)}
     .profile-frame{border-color:rgba(103,232,213,.65);box-shadow:0 28px 90px rgba(0,0,0,.55),0 0 0 12px rgba(120,169,255,.05),0 0 65px rgba(103,232,213,.17)}
 
+
+    .certification-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .certification-card{min-height:220px;position:relative}
+    .certification-card .cert-mark{display:inline-flex;align-items:center;justify-content:center;min-width:54px;height:38px;padding:0 10px;border-radius:9px;background:linear-gradient(120deg,rgba(120,169,255,.2),rgba(103,232,213,.16));border:1px solid rgba(174,190,255,.2);color:#dceaff;font:700 .78rem "Space Grotesk";letter-spacing:.06em;margin-bottom:13px}
+    .certification-card h3{margin:0 0 8px}
+    .certification-card p{margin:0 0 12px}
+    .certification-card small{color:#8de9df;letter-spacing:.04em}
+    @media(max-width:700px){.certification-grid{grid-template-columns:1fr}}
+
   </style>
 </head>
 <body>
   <div id="progress"></div>
   <header><nav class="wrap"><a class="logo" href="#home">N<span>K</span>.</a><button class="menu" id="menu" aria-label="Open navigation">☰</button>
-    <div class="links" id="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#interests">Interests</a><a href="#contact">Contact</a></div>
+    <div class="links" id="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#interests">Interests</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a></div>
   </nav></header>
   <main>
     <section class="hero" id="home"><div class="wrap reveal hero-layout">
@@ -206,7 +215,17 @@
       <div class="interest"><h3>Software Development</h3><p class="intro">Writing clean code and strengthening problem-solving.</p></div>
       <div class="interest"><h3>Data & Cloud</h3><p class="intro">Exploring data-driven systems and cloud infrastructure.</p></div>
     </div></div></section>
-    <section id="contact"><div class="wrap reveal"><div class="contact"><div class="section-label">05 / Contact</div><h2>Let's connect.</h2><p class="intro">I'm open to meaningful conversations, learning opportunities and collaborations in technology.</p>
+    <section id="certifications"><div class="wrap reveal"><div class="section-label">05 / Certifications & learning</div><h2>Learning beyond the classroom</h2>
+      <p class="intro">A selection of courses, training programmes and hands-on learning activities completed alongside my studies.</p>
+      <div class="grid certification-grid" style="margin-top:25px">
+        <article class="card certification-card"><div class="cert-mark">HTML</div><h3>HTML</h3><p>Infosys · September 2024</p><small>Certificate</small></article>
+        <article class="card certification-card"><div class="cert-mark">AWS</div><h3>AWS Builders Online Series</h3><p>Amazon Web Services · July 2025</p><small>Online learning series</small></article>
+        <article class="card certification-card"><div class="cert-mark">JAVA</div><h3>Java Training</h3><p>IIT Bombay · September 2025</p><small>Training</small></article>
+        <article class="card certification-card"><div class="cert-mark">NPTEL</div><h3>Research Methodology</h3><p>NPTEL · July–September 2025</p><small>Course</small></article>
+        <article class="card certification-card"><div class="cert-mark">IoT</div><h3>IoT in Industry</h3><p>NYTT AB Sweden · February 2025</p><small>Hands-on learning</small></article>
+      </div>
+    </div></section>
+    <section id="contact"><div class="wrap reveal"><div class="contact"><div class="section-label">06 / Contact</div><h2>Let's connect.</h2><p class="intro">I'm open to meaningful conversations, learning opportunities and collaborations in technology.</p>
       <div class="actions"><a class="btn primary" href="mailto:naveenkumar.domain@gmail.com">Email me ↗</a><a class="btn" href="https://www.linkedin.com/in/naveen-infotech" target="_blank" rel="noreferrer">LinkedIn ↗</a><a class="btn" href="https://github.com/naveen-domain" target="_blank" rel="noreferrer">GitHub ↗</a></div>
       <p style="font-size:.82rem;color:var(--muted);margin-top:18px">You can reach me by email or connect with me on LinkedIn.</p>
     </div></div></section>
