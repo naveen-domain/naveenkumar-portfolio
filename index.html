@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Naveenkumar — Computer Science postgraduate, developer and technology enthusiast. Explore skills, projects and interests.">
+  <meta name="theme-color" content="#080d18">
+  <title>Naveenkumar | Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#080d18;--panel:#101a2b;--text:#f4f7ff;--muted:#a7b4c9;--blue:#65b5ff;--cyan:#71e2e0;--line:rgba(190,215,255,.14)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 "DM Sans",sans-serif;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 12% 12%,rgba(35,111,190,.2),transparent 38%),radial-gradient(ellipse at 88% 42%,rgba(34,173,181,.12),transparent 34%),linear-gradient(135deg,#080d18,#0a1424 55%,#080d18)}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1100px,calc(100% - 42px));margin:auto}
+    #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));z-index:50}
+    header{position:fixed;inset:0 0 auto;z-index:40;background:rgba(8,13,24,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    nav{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font:700 1.1rem "Space Grotesk";letter-spacing:.1em}.logo span{color:var(--blue)}
+    .links{display:flex;gap:25px;align-items:center;color:#c0ccdc;font-size:.92rem}.links a:hover{color:var(--cyan)}
+    .menu{display:none;background:none;border:1px solid var(--line);color:white;border-radius:8px;padding:7px 11px;font-size:1rem}
+    .hero{min-height:690px;display:flex;align-items:center;padding:130px 0 90px;position:relative}
+    .hero:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.45;background:linear-gradient(90deg,#080d18 5%,rgba(8,13,24,.82) 55%,rgba(8,13,24,.5)),url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1800&q=80") center/cover}
+    .eyebrow{color:var(--cyan);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+    h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.15}h1{font-size:clamp(2.8rem,7vw,5.5rem);margin:17px 0}h1 span{background:linear-gradient(90deg,var(--blue),var(--cyan));background-clip:text;color:transparent}
+    .hero p{max-width:650px;color:var(--muted);font-size:1.1rem}.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:28px}
+    .btn{display:inline-block;padding:11px 19px;border-radius:9px;border:1px solid var(--line);font-weight:600}.primary{background:linear-gradient(100deg,#398de0,#36bfc0);color:#06111d;border:0}
+    section{padding:85px 0}.section-label{color:var(--cyan);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+    h2{font-size:clamp(2rem,4vw,3rem);margin:10px 0 28px}.intro{color:var(--muted);max-width:760px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{background:linear-gradient(145deg,rgba(16,26,43,.95),rgba(11,20,34,.9));border:1px solid var(--line);border-radius:16px;padding:25px;transition:transform .25s,border-color .25s}
+    .card:hover{transform:translateY(-5px);border-color:rgba(101,181,255,.55)}.card p{color:var(--muted);margin-bottom:0}
+    .tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.tag{font-size:.85rem;color:#d6e8fa;border:1px solid var(--line);background:rgba(101,181,255,.07);padding:6px 11px;border-radius:30px}
+    .project-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.project-top small{color:var(--cyan)}
+    .interest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.interest{padding:20px;border:1px solid var(--line);border-radius:13px;background:rgba(16,26,43,.65)}
+    .contact{background:linear-gradient(135deg,rgba(35,111,190,.15),rgba(34,173,181,.08));border:1px solid var(--line);border-radius:20px;padding:35px}
+    footer{padding:30px 0;color:var(--muted);border-top:1px solid var(--line);font-size:.9rem}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:700px){.links{display:none;position:absolute;top:72px;left:0;right:0;padding:18px 22px 25px;background:#0b1423;flex-direction:column;align-items:flex-start}.links.open{display:flex}.menu{display:block}.hero{min-height:620px}.grid,.interest-grid{grid-template-columns:1fr}section{padding:65px 0}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{transition:none}}
+  </style>
+</head>
+<body>
+  <div id="progress"></div>
+  <header><nav class="wrap"><a class="logo" href="#home">N<span>K</span>.</a><button class="menu" id="menu" aria-label="Open navigation">☰</button>
+    <div class="links" id="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#interests">Interests</a><a href="#contact">Contact</a></div>
+  </nav></header>
+  <main>
+    <section class="hero" id="home"><div class="wrap reveal">
+      <div class="eyebrow">Computer Science · Developer · Lifelong Learner</div>
+      <h1>Hi, I'm<br><span>Naveenkumar.</span></h1>
+      <p>I'm a Computer Science postgraduate interested in building useful software, exploring emerging technologies and turning ideas into practical solutions.</p>
+      <div class="actions"><a class="btn primary" href="#projects">Explore my work ↓</a><a class="btn" href="#contact">Get in touch</a></div>
+    </div></section>
+    <section id="about"><div class="wrap reveal"><div class="section-label">01 / About</div><h2>Curious mind. Practical approach.</h2>
+      <p class="intro">I am pursuing an M.Sc. in Computer Science at Dr. N.G.P. Arts and Science College, Coimbatore, after completing my B.Sc. in Information Technology at Gobi Arts and Science College. I enjoy learning how technology works and applying that knowledge through projects and continuous practice.</p>
+      <div class="grid" style="margin-top:25px"><article class="card"><h3>Education</h3><p><strong>M.Sc. Computer Science</strong><br>Dr. N.G.P. Arts and Science College · 2025–2027</p><p><strong>B.Sc. Information Technology</strong><br>Gobi Arts and Science College · 2022–2025</p></article>
+      <article class="card"><h3>What drives me</h3><p>Learning by building, improving problem-solving skills, collaborating with others and exploring the intersection of software, data and AI.</p></article></div>
+    </div></section>
+    <section id="skills"><div class="wrap reveal"><div class="section-label">02 / Skills</div><h2>Tools I work with</h2>
+      <div class="grid"><article class="card"><h3>Programming</h3><div class="tags"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">C</span><span class="tag">C++</span><span class="tag">SQL</span></div></article>
+      <article class="card"><h3>Web development</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
+      <article class="card"><h3>Data & databases</h3><div class="tags"><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">NumPy</span><span class="tag">Pandas</span></div></article>
+      <article class="card"><h3>Tools & frameworks</h3><div class="tags"><span class="tag">VS Code</span><span class="tag">IntelliJ IDEA</span><span class="tag">Spyder</span><span class="tag">TensorFlow</span><span class="tag">Keras</span></div></article></div>
+    </div></section>
+    <section id="projects"><div class="wrap reveal"><div class="section-label">03 / Projects</div><h2>Learning through building</h2>
+      <div class="grid"><article class="card"><div class="project-top"><h3>Mobile Shop Management System</h3><small>Academic project</small></div><p>A system concept focused on organizing mobile-shop inventory and sales operations, including billing and stock management.</p><div class="tags"><span class="tag">Database</span><span class="tag">Application Development</span></div></article>
+      <article class="card"><div class="project-top"><h3>Sales Forecasting Model</h3><small>Academic project</small></div><p>A predictive analytics project exploring historical sales data to identify patterns and estimate future sales trends.</p><div class="tags"><span class="tag">Python</span><span class="tag">Data Analysis</span><span class="tag">Machine Learning</span></div></article></div>
+    </div></section>
+    <section id="interests"><div class="wrap reveal"><div class="section-label">04 / Interests</div><h2>What I'm exploring</h2><div class="interest-grid">
+      <div class="interest"><h3>Artificial Intelligence</h3><p class="intro">Understanding AI concepts and practical applications.</p></div>
+      <div class="interest"><h3>Software Development</h3><p class="intro">Writing clean code and strengthening problem-solving.</p></div>
+      <div class="interest"><h3>Data & Cloud</h3><p class="intro">Exploring data-driven systems and cloud infrastructure.</p></div>
+    </div></div></section>
+    <section id="contact"><div class="wrap reveal"><div class="contact"><div class="section-label">05 / Contact</div><h2>Let's connect.</h2><p class="intro">I'm open to meaningful conversations, learning opportunities and collaborations in technology.</p>
+      <div class="actions"><a class="btn primary" href="mailto:YOUR_EMAIL@example.com">Email me ↗</a><a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a class="btn" href="https://github.com/naveen-domain" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+      <p style="font-size:.82rem;color:var(--muted);margin-top:18px">Contact email and LinkedIn profile link will be personalized before final publishing.</p>
+    </div></div></section>
+  </main>
+  <footer><div class="wrap">© <span id="year"></span> Naveenkumar. Built with curiosity and code.</div></footer>
+  <script>
+    const menu=document.getElementById('menu'),links=document.getElementById('links');
+    menu.addEventListener('click',()=>links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+    document.getElementById('year').textContent=new Date().getFullYear();
+    const progress=document.getElementById('progress');
+    window.addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'});
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
