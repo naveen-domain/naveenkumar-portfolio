@@ -172,6 +172,23 @@
     .certification-card small{color:#8de9df;letter-spacing:.04em}
     @media(max-width:700px){.certification-grid{grid-template-columns:1fr}}
 
+
+    /* Project cards: clearer, honest academic-project storytelling */
+    .project-intro{margin:-12px 0 28px}
+    .project-grid{align-items:stretch}
+    .project-card{display:flex;flex-direction:column;min-height:100%}
+    .project-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+    .project-number{font:700 1.45rem "Space Grotesk",sans-serif;color:var(--cyan);letter-spacing:-.04em}
+    .project-type{font-size:.78rem;letter-spacing:.04em;color:#d5ddf4;border:1px solid var(--line);border-radius:30px;padding:5px 10px}
+    .project-card h3{font-size:1.35rem;margin:0 0 12px}
+    .project-detail{margin-top:14px;padding:13px 14px;border-left:2px solid var(--cyan);background:rgba(111,160,220,.07);border-radius:0 9px 9px 0}
+    .project-detail strong,.project-detail span{display:block}
+    .project-detail strong{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:5px}
+    .project-detail span{font-size:.9rem;color:#d3deef;line-height:1.65}
+    .project-card .tags{margin-top:auto;padding-top:20px}
+    .project-note{margin:24px 0 0;color:var(--muted);font-size:.84rem;line-height:1.7}
+    @media(max-width:700px){.project-intro{margin-top:-4px}.project-card{min-height:0}}
+
   </style>
 </head>
 <body>
@@ -207,8 +224,24 @@
       <article class="card"><h3>Tools & frameworks</h3><div class="tags"><span class="tag">VS Code</span><span class="tag">IntelliJ IDEA</span><span class="tag">Spyder</span><span class="tag">TensorFlow</span><span class="tag">Keras</span></div></article></div>
     </div></section>
     <section id="projects"><div class="wrap reveal"><div class="section-label">03 / Projects</div><h2>Learning through building</h2>
-      <div class="grid"><article class="card"><div class="project-top"><h3>Mobile Shop Management System</h3><small>Academic project</small></div><p>Developed a web-based application using Python and MySQL to support mobile-shop operations. The system helps manage product inventory, track stock, and handle billing in one place.</p><div class="tags"><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">Web Application</span><span class="tag">Inventory Management</span></div></article>
-      <article class="card"><div class="project-top"><h3>Sales Forecasting System</h3><small>Academic project</small></div><p>Built a predictive analytics project using Python to explore historical sales data, identify patterns, and estimate future sales trends. Used data analysis and visualization techniques to understand the results.</p><div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">Data Analysis</span></div></article></div>
+      <p class="intro project-intro">A selection of academic work that reflects how I apply classroom learning to practical problem areas.</p>
+      <div class="grid project-grid">
+        <article class="card project-card">
+          <div class="project-heading"><span class="project-number">01</span><span class="project-type">Academic project</span></div>
+          <h3>Mobile Shop Management System</h3>
+          <p>A web-based academic project designed to support day-to-day mobile shop operations by bringing inventory, stock tracking and billing activities into one system.</p>
+          <div class="project-detail"><strong>Project focus</strong><span>Product records · Stock management · Billing workflow</span></div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">Web Application</span></div>
+        </article>
+        <article class="card project-card">
+          <div class="project-heading"><span class="project-number">02</span><span class="project-type">Academic project</span></div>
+          <h3>Sales Forecasting Model</h3>
+          <p>A data-focused academic project using historical sales information to explore patterns and estimate possible future sales trends through analysis and visualisation.</p>
+          <div class="project-detail"><strong>Project focus</strong><span>Data exploration · Trend analysis · Visualisation</span></div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">Data Analysis</span></div>
+        </article>
+      </div>
+      <p class="project-note">These are academic projects. The descriptions focus on their learning objectives, problem areas and tools rather than claiming production use or measured business results.</p>
     </div></section>
     <section id="interests"><div class="wrap reveal"><div class="section-label">04 / Interests</div><h2>What I'm exploring</h2><div class="interest-grid">
       <div class="interest"><h3>Artificial Intelligence</h3><p class="intro">Understanding AI concepts and practical applications.</p></div>
