@@ -189,6 +189,19 @@
     .project-note{margin:24px 0 0;color:var(--muted);font-size:.84rem;line-height:1.7}
     @media(max-width:700px){.project-intro{margin-top:-4px}.project-card{min-height:0}}
 
+  
+    /* Learning interests: readable cards that adapt across screen sizes */
+    .interest-grid{grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch}
+    .interest{min-width:0;min-height:250px;display:flex;flex-direction:column;gap:12px;padding:22px;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+    .interest:hover{transform:translateY(-5px);border-color:rgba(103,232,213,.55);box-shadow:0 16px 38px rgba(0,0,0,.2)}
+    .interest-kicker{color:var(--cyan);font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+    .interest h3{font-size:1.05rem;line-height:1.4;margin:0}
+    .interest-copy{color:var(--muted);font-size:.9rem;line-height:1.7;margin:0}
+    .interests-intro{max-width:760px;margin-bottom:28px}
+    @media(max-width:1050px){.interest-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:600px){.interest-grid{grid-template-columns:1fr}.interest{min-height:0}}
+    @media(prefers-reduced-motion:reduce){.interest{transition:none}.interest:hover{transform:none}}
+    
   </style>
 </head>
 <body>
@@ -243,11 +256,35 @@
       </div>
       <p class="project-note">These are academic projects. The descriptions focus on their learning objectives, problem areas and tools rather than claiming production use or measured business results.</p>
     </div></section>
-    <section id="interests"><div class="wrap reveal"><div class="section-label">04 / Interests</div><h2>What I'm exploring</h2><div class="interest-grid">
-      <div class="interest"><h3>Artificial Intelligence</h3><p class="intro">Understanding AI concepts and practical applications.</p></div>
-      <div class="interest"><h3>Software Development</h3><p class="intro">Writing clean code and strengthening problem-solving.</p></div>
-      <div class="interest"><h3>Data & Cloud</h3><p class="intro">Exploring data-driven systems and cloud infrastructure.</p></div>
-    </div></div></section>
+    <section id="interests" aria-labelledby="interests-title">
+    <div class="wrap reveal">
+      <div class="section-label">04 / Learning &amp; Research Interests</div>
+      <h2 id="interests-title">Curious about what’s next.</h2>
+      <p class="intro interests-intro">I’m continuing to build my computer science foundations through postgraduate study, independent learning and academic projects. These are areas I’m currently exploring.</p>
+      <div class="interest-grid">
+        <article class="interest">
+          <span class="interest-kicker">01 / Learning focus</span>
+          <h3>Programming &amp; Software Development</h3>
+          <p class="interest-copy">Strengthening my Python and Java foundations, practising problem-solving and developing web skills with HTML, CSS and JavaScript.</p>
+        </article>
+        <article class="interest">
+          <span class="interest-kicker">02 / Learning focus</span>
+          <h3>Artificial Intelligence &amp; Machine Learning</h3>
+          <p class="interest-copy">Exploring core AI and machine learning concepts and understanding how they can be applied to practical problems.</p>
+        </article>
+        <article class="interest">
+          <span class="interest-kicker">03 / Learning focus</span>
+          <h3>Data Science &amp; Analytics</h3>
+          <p class="interest-copy">Learning data preparation, exploratory analysis, visualisation and predictive modelling.</p>
+        </article>
+        <article class="interest">
+          <span class="interest-kicker">04 / Learning focus</span>
+          <h3>Emerging Technologies</h3>
+          <p class="interest-copy">Exploring cloud computing, distributed systems, the Internet of Things and modern computing infrastructure.</p>
+        </article>
+      </div>
+    </div>
+  </section>
     <section id="certifications"><div class="wrap reveal"><div class="section-label">05 / Certifications & learning</div><h2>Learning beyond the classroom</h2>
       <p class="intro">A selection of courses, training programmes and hands-on learning activities completed alongside my studies.</p>
       <div class="grid certification-grid" style="margin-top:25px">
