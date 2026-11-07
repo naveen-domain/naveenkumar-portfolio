@@ -202,6 +202,17 @@
     @media(max-width:600px){.interest-grid{grid-template-columns:1fr}.interest{min-height:0}}
     @media(prefers-reduced-motion:reduce){.interest{transition:none}.interest:hover{transform:none}}
     
+
+    /* Contact methods: clear destinations and accessible link targets */
+    .contact-methods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+    .contact-method{display:flex;min-width:0;flex-direction:column;gap:8px;padding:19px;border:1px solid var(--line);border-radius:13px;background:rgba(8,16,32,.34);transition:transform .2s ease,border-color .2s ease,background .2s ease}
+    .contact-method:hover,.contact-method:focus-visible{transform:translateY(-3px);border-color:rgba(103,232,213,.6);background:rgba(103,232,213,.06)}
+    .contact-method:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+    .contact-method-label{color:var(--cyan);font-size:.68rem;font-weight:700;letter-spacing:.12em}
+    .contact-method strong{font-size:1rem;overflow-wrap:anywhere}
+    .contact-method-action{color:var(--muted);font-size:.85rem}
+    .contact-note{color:var(--muted);font-size:.82rem;margin:18px 0 0}
+    @media(max-width:760px){.contact-methods{grid-template-columns:1fr}.contact-method{padding:17px}}
   </style>
 </head>
 <body>
@@ -295,9 +306,19 @@
         <article class="card certification-card"><div class="cert-mark">IoT</div><h3>IoT in Industry</h3><p>NYTT AB Sweden · February 2025</p><small>Hands-on learning</small></article>
       </div>
     </div></section>
-    <section id="contact"><div class="wrap reveal"><div class="contact"><div class="section-label">06 / Contact</div><h2>Let's connect.</h2><p class="intro">I'm open to meaningful conversations, learning opportunities and collaborations in technology.</p>
-      <div class="actions"><a class="btn primary" href="mailto:naveenkumar.domain@gmail.com">Email me ↗</a><a class="btn" href="https://www.linkedin.com/in/naveen-infotech" target="_blank" rel="noreferrer">LinkedIn ↗</a><a class="btn" href="https://github.com/naveen-domain" target="_blank" rel="noreferrer">GitHub ↗</a></div>
-      <p style="font-size:.82rem;color:var(--muted);margin-top:18px">You can reach me by email or connect with me on LinkedIn.</p>
+    <section id="contact" aria-labelledby="contact-title"><div class="wrap reveal"><div class="contact"><div class="section-label">06 / Contact</div><h2 id="contact-title">Let's connect.</h2><p class="intro">I'm open to meaningful conversations, learning opportunities and collaborations in technology.</p>
+      <div class="contact-methods">
+        <a class="contact-method" href="mailto:naveenkumar.domain@gmail.com" aria-label="Send an email to naveenkumar.domain@gmail.com">
+          <span class="contact-method-label">EMAIL</span><strong>naveenkumar.domain@gmail.com</strong><span class="contact-method-action">Send a message ↗</span>
+        </a>
+        <a class="contact-method" href="https://www.linkedin.com/in/naveen-infotech" target="_blank" rel="noopener noreferrer" aria-label="Open Naveenkumar's LinkedIn profile in a new tab">
+          <span class="contact-method-label">PROFESSIONAL NETWORK</span><strong>LinkedIn</strong><span class="contact-method-action">View profile ↗</span>
+        </a>
+        <a class="contact-method" href="https://github.com/naveen-domain" target="_blank" rel="noopener noreferrer" aria-label="Open Naveenkumar's GitHub profile in a new tab">
+          <span class="contact-method-label">CODE & PROJECTS</span><strong>GitHub</strong><span class="contact-method-action">Explore repositories ↗</span>
+        </a>
+      </div>
+      <p class="contact-note">Email opens your default mail application. Social links open in a new tab.</p>
     </div></div></section>
   </main>
   <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
