@@ -213,14 +213,26 @@
     .contact-method-action{color:var(--muted);font-size:.85rem}
     .contact-note{color:var(--muted);font-size:.82rem;margin:18px 0 0}
     @media(max-width:760px){.contact-methods{grid-template-columns:1fr}.contact-method{padding:17px}}
+    .skip-link{
+      position:fixed;top:10px;left:10px;z-index:100;
+      padding:10px 14px;border-radius:8px;
+      background:#f5f7ff;color:#081225;font-weight:700;
+      transform:translateY(-160%);transition:transform .2s ease
+    }
+    .skip-link:focus{transform:translateY(0);outline:3px solid var(--cyan);outline-offset:3px}
+    .menu:focus-visible,.links a:focus-visible,.logo:focus-visible{
+      outline:2px solid var(--cyan);outline-offset:4px;border-radius:5px
+    }
+    @media(prefers-reduced-motion:reduce){.skip-link{transition:none}}
   </style>
 </head>
 <body>
-  <div id="progress"></div>
-  <header><nav class="wrap"><a class="logo" href="#home">N<span>K</span>.</a><button class="menu" id="menu" aria-label="Open navigation">☰</button>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="progress" aria-hidden="true"></div>
+  <header><nav class="wrap" aria-label="Primary navigation"><a class="logo" href="#home">N<span>K</span>.</a><button class="menu" id="menu" type="button" aria-controls="links" aria-expanded="false" aria-label="Open navigation">☰</button>
     <div class="links" id="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#interests">Interests</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a></div>
   </nav></header>
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="hero" id="home"><div class="wrap reveal hero-layout">
       <div>
         <div class="eyebrow">Computer Science · Developer · Lifelong Learner</div>
@@ -325,8 +337,21 @@
   <footer><div class="wrap">© <span id="year"></span> Naveenkumar. Built with curiosity and code.</div></footer>
   <script>
     const menu=document.getElementById('menu'),links=document.getElementById('links');
-    menu.addEventListener('click',()=>links.classList.toggle('open'));
-    links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+    function setMenuOpen(isOpen){
+      links.classList.toggle('open',isOpen);
+      menu.setAttribute('aria-expanded',String(isOpen));
+      menu.setAttribute('aria-label',isOpen?'Close navigation':'Open navigation');
+      menu.textContent=isOpen?'×':'☰';
+    }
+    menu.addEventListener('click',()=>setMenuOpen(menu.getAttribute('aria-expanded')!=='true'));
+    links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenuOpen(false)));
+    document.addEventListener('keydown',event=>{
+      if(event.key==='Escape' && menu.getAttribute('aria-expanded')==='true'){
+        setMenuOpen(false);
+        menu.focus();
+      }
+    });
+    window.addEventListener('resize',()=>{if(window.innerWidth>700)setMenuOpen(false)});
     document.getElementById('year').textContent=new Date().getFullYear();
     const roleText=document.getElementById('roleText');
     const roles=['building software','solving problems','exploring AI','learning cloud technologies'];
