@@ -237,6 +237,19 @@
       outline:2px solid var(--cyan);outline-offset:4px;border-radius:5px
     }
     @media(prefers-reduced-motion:reduce){.skip-link{transition:none}}
+  
+    /* Education timeline */
+    .education-timeline{list-style:none;margin:22px 0 0;padding:0 0 0 22px;position:relative}
+    .education-timeline:before{content:"";position:absolute;left:5px;top:8px;bottom:12px;width:1px;background:linear-gradient(var(--cyan),rgba(120,169,255,.25))}
+    .education-item{position:relative;padding:0 0 27px 15px}
+    .education-item:last-child{padding-bottom:0}
+    .education-item:before{content:"";position:absolute;left:-21px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 5px rgba(103,232,213,.10)}
+    .education-period{display:inline-block;color:var(--cyan);font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+    .education-item h4{font:600 1.08rem/1.4 "Space Grotesk",sans-serif;margin:8px 0 4px;color:var(--text)}
+    .education-item p{margin:0;color:var(--muted);line-height:1.65}
+    .education-status{display:inline-block;margin-top:10px;padding:4px 9px;border:1px solid var(--line);border-radius:20px;color:#dce8fb;font-size:.76rem}
+    @media(max-width:700px){.education-timeline{margin-top:18px}.education-item{padding-bottom:23px}}
+
   </style>
 </head>
 <body>
@@ -263,8 +276,29 @@
     </div></div>
     <section id="about"><div class="wrap reveal"><div class="section-label">01 / About</div><h2>Curious mind. Practical approach.</h2>
       <p class="intro">I am pursuing an M.Sc. in Computer Science at Dr. N.G.P. Arts and Science College, Coimbatore, after completing my B.Sc. in Information Technology at Gobi Arts and Science College. I enjoy learning how technology works and applying that knowledge through projects and continuous practice.</p>
-      <div class="grid" style="margin-top:25px"><article class="card"><h3>Education</h3><p><strong>M.Sc. Computer Science</strong><br>Dr. N.G.P. Arts and Science College · 2025–2027</p><p><strong>B.Sc. Information Technology</strong><br>Gobi Arts and Science College · 2022–2025</p></article>
-      <article class="card"><h3>What drives me</h3><p>Learning by building, improving problem-solving skills, collaborating with others and exploring the intersection of software, data and AI.</p></article></div>
+      <div class="grid about-grid" style="margin-top:25px">
+        <article class="card education-card">
+          <h3>Education</h3>
+          <ol class="education-timeline" aria-label="Academic history">
+            <li class="education-item">
+              <span class="education-period">2025–2027 · In progress</span>
+              <h4>M.Sc. Computer Science</h4>
+              <p>Dr. N.G.P. Arts and Science College</p>
+              <span class="education-status">Currently pursuing</span>
+            </li>
+            <li class="education-item">
+              <span class="education-period">2022–2025 · Completed</span>
+              <h4>B.Sc. Information Technology</h4>
+              <p>Gobi Arts and Science College</p>
+              <span class="education-status">Undergraduate degree</span>
+            </li>
+          </ol>
+        </article>
+        <article class="card">
+          <h3>What drives me</h3>
+          <p>Learning by building, improving problem-solving skills, collaborating with others and exploring the intersection of software, data and AI.</p>
+        </article>
+      </div>
     </div></section>
     <section id="skills"><div class="wrap reveal"><div class="section-label">02 / Skills</div><h2>Tools I work with</h2>
       <div class="grid"><article class="card"><h3>Programming</h3><div class="tags"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">C</span><span class="tag">C++</span><span class="tag">SQL</span></div></article>
