@@ -250,6 +250,23 @@
     .education-status{display:inline-block;margin-top:10px;padding:4px 9px;border:1px solid var(--line);border-radius:20px;color:#dce8fb;font-size:.76rem}
     @media(max-width:700px){.education-timeline{margin-top:18px}.education-item{padding-bottom:23px}}
 
+  
+    /* 3D character hero: lightweight procedural Three.js scene */
+    .avatar-stage{width:min(100%,440px);aspect-ratio:1/1.08;position:relative;justify-self:center;isolation:isolate;perspective:1000px}
+    .avatar-stage:before{content:"";position:absolute;inset:13% 8% 8%;border-radius:50%;background:radial-gradient(ellipse,rgba(103,232,213,.13),rgba(120,169,255,.1) 45%,transparent 72%);filter:blur(18px);z-index:-2}
+    .avatar-glow{position:absolute;width:68%;height:68%;left:16%;top:17%;border-radius:50%;background:linear-gradient(135deg,rgba(120,169,255,.24),rgba(167,139,250,.18),rgba(103,232,213,.2));filter:blur(55px);z-index:-1;animation:avatarGlow 6s ease-in-out infinite alternate}
+    #avatar3d{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:2;outline:none}
+    .avatar-orbit{position:absolute;left:7%;top:25%;width:86%;height:52%;border:1px solid rgba(125,205,255,.32);border-radius:50%;transform:rotate(-24deg);z-index:1;pointer-events:none}
+    .orbit-two{left:13%;top:19%;width:74%;height:64%;border-color:rgba(167,139,250,.25);transform:rotate(58deg)}
+    .avatar-label{position:absolute;z-index:3;font:700 .65rem "Space Grotesk",sans-serif;letter-spacing:.16em;color:#dceaff;padding:9px 12px;border:1px solid rgba(174,190,255,.22);border-radius:30px;background:rgba(10,18,36,.78);backdrop-filter:blur(12px);box-shadow:0 8px 30px rgba(0,0,0,.2)}
+    .avatar-label-top{top:12%;right:-1%}.avatar-label-bottom{bottom:9%;left:3%;color:#8de9df}
+    .label-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#67e8d5;box-shadow:0 0 10px #67e8d5;margin-right:7px}
+    .avatar-fallback{display:none;position:absolute;inset:12%;border-radius:50%;overflow:hidden;border:1px solid var(--line)}
+    .avatar-fallback img{width:100%;height:100%;object-fit:cover}
+    @keyframes avatarGlow{from{transform:scale(.9);opacity:.7}to{transform:scale(1.12);opacity:1}}
+    @media(max-width:700px){.avatar-stage{width:min(88vw,350px);justify-self:center;grid-row:1}.avatar-label-top{right:0;top:9%}.avatar-label-bottom{bottom:7%;left:0}}
+    @media(prefers-reduced-motion:reduce){.avatar-glow{animation:none}}
+
   </style>
 </head>
 <body>
@@ -268,7 +285,14 @@
         <div class="availability">Open to graduate opportunities and collaboration</div>
         <div class="actions"><a class="btn primary" href="#projects">Explore my work ↓</a><a class="btn" href="#contact">Get in touch</a><a class="btn" href="resume.html" target="_blank" rel="noopener noreferrer">View Resume ↗</a><a class="btn" href="Naveenkumar_Resume.pdf" download>Download Resume ↓</a></div>
       </div>
-      <div class="profile-frame"><img src="naveen-profile.jpg" alt="Naveenkumar profile portrait" fetchpriority="high" decoding="async"></div>
+      <div class="avatar-stage" aria-label="Animated 3D developer character">
+    <div class="avatar-glow"></div>
+    <div class="avatar-orbit orbit-one"></div><div class="avatar-orbit orbit-two"></div>
+    <canvas id="avatar3d" aria-label="A stylised 3D developer avatar"></canvas>
+    <div class="avatar-label avatar-label-top"><span class="label-dot"></span> CREATIVE MINDSET</div>
+    <div class="avatar-label avatar-label-bottom">BUILD · LEARN · CREATE</div>
+    <div class="avatar-fallback"><img src="naveen-profile.jpg" alt="Naveenkumar profile portrait" fetchpriority="high" decoding="async"></div>
+  </div>
     </div></section>
     <div class="ticker" aria-label="Areas of interest"><div class="ticker-track">
       <span>SOFTWARE DEVELOPMENT <b>✦</b></span><span>PYTHON & JAVA <b>✦</b></span><span>ARTIFICIAL INTELLIGENCE <b>✦</b></span><span>DATA & CLOUD <b>✦</b></span><span>CONTINUOUS LEARNING <b>✦</b></span>
@@ -411,5 +435,90 @@
     const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   </script>
+
+  <script type="module">
+    const canvas = document.getElementById('avatar3d');
+    const fallback = document.querySelector('.avatar-fallback');
+    try {
+      const THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
+      camera.position.set(0, 0.15, 7.2);
+      const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.7));
+      renderer.setClearColor(0x000000, 0);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.25;
+      scene.add(new THREE.HemisphereLight(0xb9d9ff, 0x251b43, 2.1));
+      const key = new THREE.DirectionalLight(0xffffff, 3.1); key.position.set(3,4,5); scene.add(key);
+      const rim = new THREE.PointLight(0x6cebdc, 34, 12); rim.position.set(-3,1,2); scene.add(rim);
+      const violet = new THREE.PointLight(0xa78bfa, 28, 10); violet.position.set(3,-1,-2); scene.add(violet);
+      const avatar = new THREE.Group(); scene.add(avatar);
+      const mat = (color, roughness=.55, metalness=0) => new THREE.MeshStandardMaterial({color,roughness,metalness});
+      const skin=mat(0xb97858,.72), skinLight=mat(0xd89570,.65), hair=mat(0x171521,.38), shirt=mat(0x171d32,.72), shirtLight=mat(0x283653,.6), white=mat(0xf2f3ff,.35), iris=mat(0x3a668f,.35), dark=mat(0x211b24,.5), accent=mat(0x69e5d7,.32,.25);
+      function ball(parent, material, pos, scale, segments=40){
+        const mesh=new THREE.Mesh(new THREE.SphereGeometry(1,segments,segments),material);
+        mesh.position.set(...pos);mesh.scale.set(...scale);parent.add(mesh);return mesh;
+      }
+      // shoulders, hoodie and neck
+      ball(avatar,shirt,[0,-1.65,0],[1.65,1.05,.72]);
+      ball(avatar,shirtLight,[0,-1.18,.18],[1.2,.48,.72]);
+      ball(avatar,skin,[0,-.72,.12],[.34,.58,.34]);
+      // ears and head
+      ball(avatar,skin,[-.83,.18,0],[.25,.34,.22]);
+      ball(avatar,skin,[.83,.18,0],[.25,.34,.22]);
+      ball(avatar,skinLight,[0,.25,.05],[.83,1.08,.67],56);
+      // hair cap and side locks
+      ball(avatar,hair,[0,.88,-.02],[.86,.49,.69],48);
+      ball(avatar,hair,[-.69,.48,.03],[.19,.48,.48]);
+      ball(avatar,hair,[.69,.48,.03],[.19,.48,.48]);
+      ball(avatar,hair,[0,.59,.58],[.7,.19,.17],36);
+      // eyebrows, eyes, pupils and nose
+      for(const x of [-.34,.34]){
+        ball(avatar,dark,[x,.37,.635],[.22,.065,.055],24);
+        ball(avatar,white,[x,.16,.655],[.205,.13,.075],32);
+        ball(avatar,iris,[x,.15,.72],[.075,.09,.035],24);
+        ball(avatar,dark,[x,.15,.75],[.035,.05,.02],20);
+      }
+      ball(avatar,skinLight,[0,-.02,.73],[.13,.2,.13],28);
+      ball(avatar,dark,[0,-.34,.65],[.31,.07,.055],28);
+      ball(avatar,white,[0,-.31,.69],[.24,.035,.025],24);
+      // subtle collar detail and hoodie drawstrings
+      ball(avatar,shirtLight,[0,-1.15,.76],[.43,.22,.1],32);
+      for(const x of [-.25,.25]){
+        const cord=new THREE.Mesh(new THREE.CylinderGeometry(.018,.018,.53,10),accent);
+        cord.position.set(x,-1.55,.72);avatar.add(cord);
+      }
+      // floating orbit ring and small luminous nodes
+      const ring=new THREE.Mesh(new THREE.TorusGeometry(1.72,.012,8,120),new THREE.MeshBasicMaterial({color:0x78a9ff,transparent:true,opacity:.65}));
+      ring.rotation.set(1.12,.2,-.35);ring.position.y=-.25;avatar.add(ring);
+      const ring2=new THREE.Mesh(new THREE.TorusGeometry(1.92,.008,8,120),new THREE.MeshBasicMaterial({color:0x67e8d5,transparent:true,opacity:.42}));
+      ring2.rotation.set(.95,-.5,.4);ring2.position.y=-.2;avatar.add(ring2);
+      const node=ball(avatar,accent,[1.42,.9,.1],[.075,.075,.075],20);
+      const node2=ball(avatar,mat(0xa78bfa,.25,.3),[-1.48,-.45,.05],[.055,.055,.055],20);
+      // tiny background stars
+      const starGeo=new THREE.BufferGeometry(), starPositions=[];
+      for(let i=0;i<100;i++){starPositions.push((Math.random()-.5)*5,(Math.random()-.5)*5,(Math.random()-.5)*2-1)}
+      starGeo.setAttribute('position',new THREE.Float32BufferAttribute(starPositions,3));
+      scene.add(new THREE.Points(starGeo,new THREE.PointsMaterial({color:0x9bbcff,size:.018,transparent:true,opacity:.7})));
+      let pointerX=0,pointerY=0,frame=0;
+      const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      canvas.addEventListener('pointermove',e=>{const r=canvas.getBoundingClientRect();pointerX=((e.clientX-r.left)/r.width-.5)*.45;pointerY=((e.clientY-r.top)/r.height-.5)*.24});
+      function resize(){const r=canvas.getBoundingClientRect();renderer.setSize(Math.max(1,r.width),Math.max(1,r.height),false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix()}
+      resize();new ResizeObserver(resize).observe(canvas);
+      function animate(){
+        if(!canvas.isConnected)return;
+        if(!reduced){frame+=.008;avatar.rotation.y+=(pointerX+Math.sin(frame)*.12-avatar.rotation.y)*.035;avatar.rotation.x+=(-pointerY+Math.sin(frame*.7)*.025-avatar.rotation.x)*.035;avatar.position.y=Math.sin(frame*1.4)*.055;ring.rotation.z+=.0018;ring2.rotation.z-=.0012}
+        renderer.render(scene,camera);requestAnimationFrame(animate);
+      }
+      animate();
+    } catch(error) {
+      canvas.style.display='none';
+      fallback.style.display='block';
+      console.warn('3D avatar unavailable; showing profile portrait instead.',error);
+    }
+  </script>
+
 </body>
 </html>
