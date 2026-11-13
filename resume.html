@@ -4,29 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080d18">
+  <meta name="description" content="View or download Naveenkumar's resume, including academic background, technical skills and projects.">
   <title>Resume | Naveenkumar</title>
   <style>
     *{box-sizing:border-box}
-    body{margin:0;background:#080d18;color:#f4f7ff;font:16px/1.5 Arial,sans-serif}
+    body{min-height:100vh;margin:0;display:flex;flex-direction:column;background:#080d18;color:#f4f7ff;font:16px/1.5 Arial,sans-serif}
     header{padding:16px 5%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:#101a2b;border-bottom:1px solid #26364d}
     a{color:#8bcaff;text-decoration:none}
+    a:focus-visible{outline:3px solid #67e8d5;outline-offset:4px;border-radius:4px}
     .actions{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{padding:9px 14px;border:1px solid #49627e;border-radius:8px}
-    main{height:calc(100vh - 72px);padding:12px}
-    iframe{width:100%;height:100%;border:0;border-radius:8px;background:#fff}
-    @media(max-width:600px){header{align-items:flex-start;flex-direction:column}.actions{width:100%}main{height:calc(100vh - 120px);padding:6px}}
+    .btn{display:inline-block;padding:9px 14px;border:1px solid #49627e;border-radius:8px}
+    main{flex:1;min-height:70vh;padding:12px;display:flex;flex-direction:column;gap:10px}
+    .fallback{margin:0;color:#b3bfd4;font-size:.9rem}
+    .fallback a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
+    iframe{flex:1;width:100%;min-height:420px;border:0;border-radius:8px;background:#fff}
+    @media(max-width:600px){
+      header{align-items:flex-start;flex-direction:column}
+      .actions{width:100%}
+      main{min-height:calc(100vh - 145px);padding:6px}
+      iframe{min-height:360px}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
   </style>
 </head>
 <body>
   <header>
     <strong>Naveenkumar · Resume</strong>
-    <div class="actions">
+    <nav class="actions" aria-label="Resume actions">
       <a class="btn" href="index.html">← Portfolio</a>
-      <a class="btn" href="Naveenkumar_Resume.pdf" download>Download PDF ↓</a>
-    </div>
+      <a class="btn" href="Naveenkumar_Resume.pdf" download type="application/pdf">Download PDF ↓</a>
+    </nav>
   </header>
-  <main>
-    <iframe src="Naveenkumar_Resume.pdf#toolbar=1&navpanes=0" title="Naveenkumar resume">
+  <main aria-label="Resume preview">
+    <p class="fallback">If the preview does not appear, <a href="Naveenkumar_Resume.pdf" target="_blank" rel="noopener noreferrer">open the PDF in a new tab</a> or use the Download PDF link above.</p>
+    <iframe src="Naveenkumar_Resume.pdf#toolbar=1&navpanes=0" title="Naveenkumar's resume PDF">
       Your browser cannot display this PDF inline.
       <a href="Naveenkumar_Resume.pdf">Open the resume PDF</a>.
     </iframe>
