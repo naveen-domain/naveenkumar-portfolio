@@ -403,6 +403,26 @@
     .preview-caption{padding:6px 10px;text-align:right;font-size:.48rem;letter-spacing:.14em;color:#7f98bd;background:rgba(5,12,25,.35)}
     @media(max-width:700px){.project-visual{height:180px}.skill-card{min-height:0}}
 
+
+    /* Step 4: animated technology ribbon and elevated contact panel */
+    .tech-orbit{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:0 0 25px;padding:16px;border:1px solid rgba(151,190,240,.13);border-radius:16px;background:linear-gradient(110deg,rgba(18,31,55,.72),rgba(10,22,41,.55));overflow:hidden}
+    .tech-chip{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border-radius:30px;border:1px solid rgba(151,190,240,.16);background:rgba(8,17,33,.72);color:#d8e7fb;font-size:.78rem;font-weight:600;animation:chipFloat 5s ease-in-out infinite}
+    .tech-chip b{display:grid;place-items:center;min-width:25px;height:25px;padding:0 5px;border-radius:8px;background:linear-gradient(135deg,rgba(103,232,213,.2),rgba(120,169,255,.2));color:var(--cyan);font:700 .68rem "Space Grotesk",sans-serif}
+    .chip-java{animation-delay:-1s}.chip-web{animation-delay:-2s}.chip-data{animation-delay:-3s}.chip-ai{animation-delay:-4s}
+    @keyframes chipFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+    .contact{position:relative;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.2)}
+    .contact:before{content:"";position:absolute;width:300px;height:300px;right:-90px;top:-150px;border-radius:50%;background:rgba(103,232,213,.13);filter:blur(55px);pointer-events:none}
+    .contact h2,.contact .intro,.contact .section-label,.contact-methods,.contact-note{position:relative}
+    .contact-methods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:26px}
+    .contact-method{min-width:0;display:flex;flex-direction:column;gap:8px;padding:17px;border:1px solid rgba(151,190,240,.18);border-radius:13px;background:rgba(5,14,29,.48);transition:transform .22s,border-color .22s,background .22s}
+    .contact-method:hover{transform:translateY(-4px);border-color:rgba(103,232,213,.48);background:rgba(14,36,55,.7)}
+    .contact-method strong{overflow-wrap:anywhere;font-size:.92rem}
+    .contact-method-label{font-size:.62rem;letter-spacing:.13em;color:var(--cyan);font-weight:700}
+    .contact-method-action{font-size:.75rem;color:#9eb3d2}
+    .contact-note{margin:17px 0 0;color:#93a8c7;font-size:.78rem}
+    @media(max-width:700px){.tech-orbit{justify-content:flex-start;gap:8px;padding:12px}.tech-chip{font-size:.72rem;padding:7px 10px}.contact-methods{grid-template-columns:1fr}.contact{padding:24px}}
+    @media(prefers-reduced-motion:reduce){.tech-chip{animation:none}.contact-method{transition:none}.contact-method:hover{transform:none}}
+
   </style>
 </head>
 <body>
@@ -461,6 +481,7 @@
       </div>
     </div></section>
     <section id="skills"><div class="wrap reveal"><div class="section-label">02 / Skills</div><h2>Tools I work with</h2>
+      <div class="tech-orbit" aria-label="Technology highlights"><span class="tech-chip chip-python"><b>Py</b> Python</span><span class="tech-chip chip-java"><b>Ja</b> Java</span><span class="tech-chip chip-web"><b>JS</b> JavaScript</span><span class="tech-chip chip-data"><b>SQL</b> Databases</span><span class="tech-chip chip-ai"><b>AI</b> Machine Learning</span></div>
       <div class="grid skill-grid"><article class="card skill-card"><div class="skill-card-top"><span class="skill-symbol">&lt;/&gt;</span><span class="skill-caption">01 · CORE</span></div><h3>Programming</h3><div class="tags"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">C</span><span class="tag">C++</span><span class="tag">SQL</span></div></article>
       <article class="card skill-card"><div class="skill-card-top"><span class="skill-symbol">✳</span><span class="skill-caption">02 · FRONT END</span></div><h3>Web development</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
       <article class="card skill-card"><div class="skill-card-top"><span class="skill-symbol">▦</span><span class="skill-caption">03 · DATA</span></div><h3>Data & databases</h3><div class="tags"><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">NumPy</span><span class="tag">Pandas</span></div></article>
