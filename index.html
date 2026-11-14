@@ -645,12 +645,14 @@
       ball(avatar,hair,[-.69,.48,.03],[.19,.48,.48]);
       ball(avatar,hair,[.69,.48,.03],[.19,.48,.48]);
       ball(avatar,hair,[0,.59,.58],[.7,.19,.17],36);
-      // eyebrows, eyes, pupils and nose
+      // eyebrows, expressive eyes, pupils and nose
+      const eyeWhites=[],eyeIris=[];
       for(const x of [-.34,.34]){
         ball(avatar,dark,[x,.37,.635],[.22,.065,.055],24);
-        ball(avatar,white,[x,.16,.655],[.205,.13,.075],32);
-        ball(avatar,iris,[x,.15,.72],[.075,.09,.035],24);
+        const eye=ball(avatar,white,[x,.16,.655],[.205,.13,.075],32);
+        const irisBall=ball(avatar,iris,[x,.15,.72],[.075,.09,.035],24);
         ball(avatar,dark,[x,.15,.75],[.035,.05,.02],20);
+        eyeWhites.push(eye);eyeIris.push(irisBall);
       }
       ball(avatar,skinLight,[0,-.02,.73],[.13,.2,.13],28);
       ball(avatar,dark,[0,-.34,.65],[.31,.07,.055],28);
@@ -689,6 +691,11 @@
         avatar.rotation.y+=(pointerX+Math.sin(frame)*.12-avatar.rotation.y)*.035;
         avatar.rotation.x+=(-pointerY+Math.sin(frame*.7)*.025-avatar.rotation.x)*.035;
         avatar.position.y=Math.sin(frame*1.4)*.055;
+        // Natural blink about every 5.5 seconds, with a soft close-and-open curve.
+        const blinkPhase=(frame%34.5);
+        const blink=Math.max(0,1-Math.abs(blinkPhase-33.95)/.42);
+        eyeWhites.forEach(eye=>{eye.scale.y=.13*(1-.94*blink)});
+        eyeIris.forEach(eye=>{eye.scale.y=.09*(1-.94*blink)});
         ring.rotation.z+=.0018;ring2.rotation.z-=.0012;
         renderer.render(scene,camera);requestAnimationFrame(animate);
       }
