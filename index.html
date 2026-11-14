@@ -329,6 +329,35 @@
       .project-card>*{transform:none}
     }
 
+
+    /* Step 2: tactile 3D interactions across the portfolio */
+    #about .about-grid>.card,#skills .grid>.card,.interest,.certification-card{
+      transform:perspective(1000px) rotateX(var(--panel-tilt-x,0deg)) rotateY(var(--panel-tilt-y,0deg)) translateY(var(--panel-lift,0px));
+      transform-style:preserve-3d;
+      transition:transform .24s cubic-bezier(.2,.75,.25,1),border-color .24s ease,box-shadow .24s ease;
+      will-change:transform;
+    }
+    #about .about-grid>.card:hover,#skills .grid>.card:hover,.interest:hover,.certification-card:hover{
+      --panel-lift:-5px;
+      border-color:rgba(103,232,213,.48);
+      box-shadow:0 22px 48px rgba(0,0,0,.24),0 0 0 1px rgba(103,232,213,.08);
+    }
+    #about .about-grid>.card::before,#skills .grid>.card::before,.interest::before,.certification-card::before{
+      content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;
+      background:radial-gradient(300px circle at var(--panel-spot-x,50%) var(--panel-spot-y,50%),rgba(103,232,213,.13),rgba(120,169,255,.055) 42%,transparent 75%);
+      transition:opacity .24s ease;
+    }
+    #about .about-grid>.card:hover::before,#skills .grid>.card:hover::before,.interest:hover::before,.certification-card:hover::before{opacity:1}
+    @media(hover:hover) and (pointer:fine){
+      #about .about-grid>.card:hover,#skills .grid>.card:hover,.interest:hover,.certification-card:hover{
+        transform:perspective(1000px) rotateX(var(--panel-tilt-x,0deg)) rotateY(var(--panel-tilt-y,0deg)) translateY(-5px);
+      }
+    }
+    @media(prefers-reduced-motion:reduce){
+      #about .about-grid>.card,#skills .grid>.card,.interest,.certification-card{transition:none;transform:none}
+      #about .about-grid>.card:hover,#skills .grid>.card:hover,.interest:hover,.certification-card:hover{transform:none}
+    }
+
   </style>
 </head>
 <body>
@@ -640,6 +669,46 @@
         if (event.matches) cards.forEach(card => {
           card.style.setProperty('--tilt-x', '0deg');
           card.style.setProperty('--tilt-y', '0deg');
+        });
+      });
+    })();
+  </script>
+
+
+  <script>
+    // Pointer-based tilt and light tracking for supporting content cards.
+    (() => {
+      const selector = '#about .about-grid > .card, #skills .grid > .card, .interest, .certification-card';
+      const cards = document.querySelectorAll(selector);
+      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (!finePointer.matches || reducedMotion.matches) return;
+
+      cards.forEach(card => {
+        const reset = () => {
+          card.style.setProperty('--panel-tilt-x', '0deg');
+          card.style.setProperty('--panel-tilt-y', '0deg');
+          card.style.setProperty('--panel-spot-x', '50%');
+          card.style.setProperty('--panel-spot-y', '50%');
+        };
+        card.addEventListener('pointermove', event => {
+          if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
+          const rect = card.getBoundingClientRect();
+          if (!rect.width || !rect.height) return;
+          const x = (event.clientX - rect.left) / rect.width;
+          const y = (event.clientY - rect.top) / rect.height;
+          card.style.setProperty('--panel-tilt-x', ((.5 - y) * 5).toFixed(2) + 'deg');
+          card.style.setProperty('--panel-tilt-y', ((x - .5) * 6).toFixed(2) + 'deg');
+          card.style.setProperty('--panel-spot-x', (x * 100).toFixed(1) + '%');
+          card.style.setProperty('--panel-spot-y', (y * 100).toFixed(1) + '%');
+        }, {passive:true});
+        card.addEventListener('pointerleave', reset);
+        card.addEventListener('pointercancel', reset);
+      });
+      reducedMotion.addEventListener?.('change', event => {
+        if (event.matches) cards.forEach(card => {
+          card.style.setProperty('--panel-tilt-x', '0deg');
+          card.style.setProperty('--panel-tilt-y', '0deg');
         });
       });
     })();
