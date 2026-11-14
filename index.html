@@ -375,6 +375,34 @@
       .hero h1 span{color:#75e7df;background:none}
     }
 
+
+    /* Step 3: project preview panels and a clearer skills showcase */
+    .skill-grid{align-items:stretch}
+    .skill-card{position:relative;overflow:hidden;min-height:210px}
+    .skill-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+    .skill-symbol{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;color:var(--cyan);font:700 1.15rem "Space Grotesk";background:linear-gradient(135deg,rgba(103,232,213,.15),rgba(120,169,255,.12));border:1px solid rgba(103,232,213,.2)}
+    .skill-caption{font-size:.66rem;letter-spacing:.13em;color:#94a9c9;font-weight:700}
+    .skill-card h3{font-size:1.18rem}
+    .project-visual{height:190px;margin:0 0 24px;border:1px solid rgba(151,190,240,.2);border-radius:13px;overflow:hidden;background:linear-gradient(145deg,#101e35,#0a1427);box-shadow:inset 0 1px rgba(255,255,255,.05),0 12px 28px rgba(0,0,0,.18);transform:translateZ(16px)}
+    .preview-top{height:30px;display:flex;align-items:center;justify-content:space-between;padding:0 11px;background:rgba(5,12,25,.72);border-bottom:1px solid rgba(151,190,240,.13);font-size:.55rem;letter-spacing:.12em;color:#aebfdb}
+    .preview-dots{font-size:.48rem;letter-spacing:.12em;color:#7ce5d6}
+    .preview-body{display:grid;grid-template-columns:35px 1fr;height:132px}
+    .preview-sidebar{display:flex;flex-direction:column;align-items:center;gap:13px;padding-top:15px;border-right:1px solid rgba(151,190,240,.12);background:rgba(5,12,25,.28)}
+    .preview-sidebar i{width:12px;height:12px;border:1px solid rgba(103,232,213,.55);border-radius:4px;background:rgba(103,232,213,.08)}
+    .preview-main,.sales-preview-body{padding:12px 15px}
+    .preview-heading{display:flex;align-items:center;justify-content:space-between;color:#e7f0ff;font-size:.72rem}
+    .preview-heading small,.preview-stats small,.sales-metrics small{font-size:.48rem;letter-spacing:.1em;color:#8ea5c7}
+    .preview-stats,.sales-metrics{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+    .preview-stats span,.sales-metrics span{display:flex;flex-direction:column;gap:4px;padding:8px 9px;border:1px solid rgba(151,190,240,.13);border-radius:7px;background:rgba(120,169,255,.06)}
+    .preview-stats b,.sales-metrics b{font:600 .8rem "Space Grotesk";color:#dffbf5}
+    .preview-table{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:9px}
+    .preview-table i{height:5px;border-radius:5px;background:rgba(145,174,214,.25)}
+    .preview-table i:nth-child(3n+1){background:rgba(103,232,213,.5)}
+    .sales-preview-body{height:132px}
+    .sales-chart{width:100%;height:68px;margin-top:4px;overflow:visible}
+    .preview-caption{padding:6px 10px;text-align:right;font-size:.48rem;letter-spacing:.14em;color:#7f98bd;background:rgba(5,12,25,.35)}
+    @media(max-width:700px){.project-visual{height:180px}.skill-card{min-height:0}}
+
   </style>
 </head>
 <body>
@@ -433,16 +461,17 @@
       </div>
     </div></section>
     <section id="skills"><div class="wrap reveal"><div class="section-label">02 / Skills</div><h2>Tools I work with</h2>
-      <div class="grid"><article class="card"><h3>Programming</h3><div class="tags"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">C</span><span class="tag">C++</span><span class="tag">SQL</span></div></article>
-      <article class="card"><h3>Web development</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
-      <article class="card"><h3>Data & databases</h3><div class="tags"><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">NumPy</span><span class="tag">Pandas</span></div></article>
-      <article class="card"><h3>Tools & frameworks</h3><div class="tags"><span class="tag">VS Code</span><span class="tag">IntelliJ IDEA</span><span class="tag">Spyder</span><span class="tag">TensorFlow</span><span class="tag">Keras</span></div></article></div>
+      <div class="grid skill-grid"><article class="card skill-card"><div class="skill-card-top"><span class="skill-symbol">&lt;/&gt;</span><span class="skill-caption">01 · CORE</span></div><h3>Programming</h3><div class="tags"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">C</span><span class="tag">C++</span><span class="tag">SQL</span></div></article>
+      <article class="card skill-card"><div class="skill-card-top"><span class="skill-symbol">✳</span><span class="skill-caption">02 · FRONT END</span></div><h3>Web development</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
+      <article class="card skill-card"><div class="skill-card-top"><span class="skill-symbol">▦</span><span class="skill-caption">03 · DATA</span></div><h3>Data & databases</h3><div class="tags"><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">NumPy</span><span class="tag">Pandas</span></div></article>
+      <article class="card skill-card"><div class="skill-card-top"><span class="skill-symbol">⌘</span><span class="skill-caption">04 · TOOLKIT</span></div><h3>Tools & frameworks</h3><div class="tags"><span class="tag">VS Code</span><span class="tag">IntelliJ IDEA</span><span class="tag">Spyder</span><span class="tag">TensorFlow</span><span class="tag">Keras</span></div></article></div>
     </div></section>
     <section id="projects"><div class="wrap reveal"><div class="section-label">03 / Projects</div><h2>Learning through building</h2>
       <p class="intro project-intro">A selection of academic work that reflects how I apply classroom learning to practical problem areas.</p>
       <div class="grid project-grid">
         <article class="card project-card">
           <div class="project-heading"><span class="project-number">01</span><span class="project-type">Academic project</span></div>
+          <div class="project-visual inventory-visual" aria-label="Illustrative inventory dashboard preview"><div class="preview-top"><span class="preview-dots">● ● ●</span><span>SHOP / INVENTORY</span><span>•••</span></div><div class="preview-body"><div class="preview-sidebar"><i></i><i></i><i></i><i></i></div><div class="preview-main"><div class="preview-heading"><b>Overview</b><small>STORE DASHBOARD</small></div><div class="preview-stats"><span><small>PRODUCTS</small><b>128</b></span><span><small>STOCK STATUS</small><b>Active</b></span></div><div class="preview-table"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div><div class="preview-caption">ILLUSTRATIVE PROJECT VISUAL</div></div>
           <h3>Mobile Shop Management System</h3>
           <p>A web-based academic project designed to support day-to-day mobile shop operations by bringing inventory, stock tracking and billing activities into one system.</p>
           <div class="project-detail"><strong>Project focus</strong><span>Product records · Stock management · Billing workflow</span></div>
@@ -450,6 +479,7 @@
         </article>
         <article class="card project-card">
           <div class="project-heading"><span class="project-number">02</span><span class="project-type">Academic project</span></div>
+          <div class="project-visual sales-visual" aria-label="Illustrative sales trend chart preview"><div class="preview-top"><span class="preview-dots">● ● ●</span><span>DATA / ANALYTICS</span><span>•••</span></div><div class="sales-preview-body"><div class="preview-heading"><b>Sales trends</b><small>HISTORICAL DATA</small></div><div class="sales-metrics"><span><small>ANALYSIS</small><b>Trend view</b></span><span><small>OUTPUT</small><b>Forecast</b></span></div><svg class="sales-chart" viewBox="0 0 420 118" role="img" aria-label="Decorative rising trend line"><defs><linearGradient id="salesFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#67e8d5" stop-opacity=".35"/><stop offset="1" stop-color="#67e8d5" stop-opacity="0"/></linearGradient></defs><path d="M0 94 C35 84 42 90 75 70 S120 79 151 55 S200 68 230 43 S275 54 310 28 S365 35 420 8 L420 118 L0 118Z" fill="url(#salesFill)"/><path d="M0 94 C35 84 42 90 75 70 S120 79 151 55 S200 68 230 43 S275 54 310 28 S365 35 420 8" fill="none" stroke="#67e8d5" stroke-width="3" stroke-linecap="round"/></svg></div><div class="preview-caption">ILLUSTRATIVE PROJECT VISUAL</div></div>
           <h3>Sales Forecasting Model</h3>
           <p>A data-focused academic project using historical sales information to explore patterns and estimate possible future sales trends through analysis and visualisation.</p>
           <div class="project-detail"><strong>Project focus</strong><span>Data exploration · Trend analysis · Visualisation</span></div>
