@@ -423,6 +423,50 @@
     @media(max-width:700px){.tech-orbit{justify-content:flex-start;gap:8px;padding:12px}.tech-chip{font-size:.72rem;padding:7px 10px}.contact-methods{grid-template-columns:1fr}.contact{padding:24px}}
     @media(prefers-reduced-motion:reduce){.tech-chip{animation:none}.contact-method{transition:none}.contact-method:hover{transform:none}}
 
+
+    /* Step 6: richer technology icons, education timeline and contact cards */
+    .tech-chip{position:relative;overflow:hidden;isolation:isolate}
+    .tech-chip::before{content:"";position:absolute;inset:0;z-index:-1;transform:translateX(-120%);background:linear-gradient(105deg,transparent,rgba(255,255,255,.10),transparent);transition:transform .65s ease}
+    .tech-chip:hover::before{transform:translateX(120%)}
+    .tech-chip b{position:relative;isolation:isolate;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease}
+    .tech-chip b::after{content:"";position:absolute;inset:-4px;border:1px dashed rgba(103,232,213,.38);border-radius:10px;pointer-events:none;animation:techIconOrbit 9s linear infinite}
+    .tech-chip:hover b{transform:translateY(-2px) rotate(-7deg);box-shadow:0 0 18px rgba(103,232,213,.22)}
+    .chip-html b{color:#ffbd8c}.chip-mysql b{color:#9ed0ff}.chip-pandas b{color:#b9a8ff}.chip-tensor b{color:#9debdc}
+    @keyframes techIconOrbit{to{transform:rotate(360deg)}}
+
+    .education-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+    .education-heading h3{margin:5px 0 0}
+    .education-kicker{font-size:.62rem;letter-spacing:.16em;font-weight:800;color:var(--cyan)}
+    .education-count{padding:6px 9px;border:1px solid rgba(151,190,240,.17);border-radius:20px;color:#a9bdd9;font-size:.62rem;letter-spacing:.09em;font-weight:700}
+    .education-timeline{margin-top:13px}
+    .education-item{margin:0 0 13px;padding:15px 15px 16px 18px;border:1px solid rgba(151,190,240,.15);border-radius:14px;background:linear-gradient(115deg,rgba(17,34,58,.8),rgba(9,19,36,.64));transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease}
+    .education-item:last-child{margin-bottom:0}
+    .education-item:hover{transform:translateX(4px);border-color:rgba(103,232,213,.38);box-shadow:0 12px 28px rgba(0,0,0,.16)}
+    .education-item:first-child{background:linear-gradient(115deg,rgba(20,51,64,.55),rgba(10,22,40,.78))}
+    .education-period{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+    .education-period-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px rgba(103,232,213,.8)}
+    .education-degree-mark{display:inline-flex;align-items:center;justify-content:center;min-width:43px;height:27px;padding:0 8px;margin:0 0 7px;border:1px solid rgba(120,169,255,.24);border-radius:7px;background:rgba(120,169,255,.09);color:#c4d7ff;font:700 .68rem "Space Grotesk",sans-serif;letter-spacing:.04em}
+    .education-item h4{margin:0 0 5px;font-size:1.12rem}
+    .education-item p{font-size:.88rem}
+    .education-status{background:rgba(103,232,213,.055);border-color:rgba(103,232,213,.2);font-size:.7rem}
+
+    .contact-method{position:relative;min-height:190px;justify-content:flex-start;gap:9px;padding:20px;overflow:hidden}
+    .contact-method::before{content:"";position:absolute;right:-42px;top:-48px;width:145px;height:145px;border-radius:50%;background:radial-gradient(circle,rgba(103,232,213,.13),transparent 70%);pointer-events:none;transition:transform .35s ease}
+    .contact-icon{display:grid;place-items:center;width:42px;height:42px;margin-bottom:5px;border:1px solid rgba(103,232,213,.24);border-radius:12px;background:linear-gradient(140deg,rgba(103,232,213,.14),rgba(120,169,255,.12));color:#a5f3e8;font:700 1.05rem "Space Grotesk",sans-serif;box-shadow:inset 0 1px rgba(255,255,255,.06),0 8px 20px rgba(0,0,0,.15);transition:transform .28s ease,box-shadow .28s ease}
+    .contact-icon-linkedin{font-size:.92rem}
+    .contact-icon-github{font-size:.83rem}
+    .contact-method:hover::before{transform:scale(1.35)}
+    .contact-method:hover .contact-icon{transform:translateY(-3px) rotate(-6deg);box-shadow:0 0 24px rgba(103,232,213,.17)}
+    .contact-method:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+    .contact-method-action{margin-top:auto;padding-top:8px}
+    @media(max-width:760px){.education-item{padding:13px}.contact-method{min-height:0}.contact-method-action{margin-top:0}}
+    @media(prefers-reduced-motion:reduce){
+      .tech-chip::before{transition:none}
+      .tech-chip b,.tech-chip b::after{animation:none;transition:none}
+      .tech-chip:hover b,.education-item:hover,.contact-method:hover .contact-icon{transform:none}
+      .education-item,.contact-method::before{transition:none}
+    }
+
   </style>
 </head>
 <body>
@@ -458,16 +502,18 @@
       <p class="intro">I am pursuing an M.Sc. in Computer Science at Dr. N.G.P. Arts and Science College, Coimbatore, after completing my B.Sc. in Information Technology at Gobi Arts and Science College. I enjoy learning how technology works and applying that knowledge through projects and continuous practice.</p>
       <div class="grid about-grid" style="margin-top:25px">
         <article class="card education-card">
-          <h3>Education</h3>
+          <div class="education-heading"><div><span class="education-kicker">ACADEMIC JOURNEY</span><h3>Education</h3></div><span class="education-count">02 · QUALIFICATIONS</span></div>
           <ol class="education-timeline" aria-label="Academic history">
             <li class="education-item">
-              <span class="education-period">2025–2027 · In progress</span>
+              <span class="education-period"><span class="education-period-dot" aria-hidden="true"></span>2025–2027 · In progress</span>
+              <span class="education-degree-mark" aria-hidden="true">M.Sc</span>
               <h4>M.Sc. Computer Science</h4>
               <p>Dr. N.G.P. Arts and Science College</p>
               <span class="education-status">Currently pursuing</span>
             </li>
             <li class="education-item">
-              <span class="education-period">2022–2025 · Completed</span>
+              <span class="education-period"><span class="education-period-dot" aria-hidden="true"></span>2022–2025 · Completed</span>
+              <span class="education-degree-mark" aria-hidden="true">B.Sc</span>
               <h4>B.Sc. Information Technology</h4>
               <p>Gobi Arts and Science College</p>
               <span class="education-status">Undergraduate degree</span>
@@ -481,7 +527,17 @@
       </div>
     </div></section>
     <section id="skills"><div class="wrap reveal"><div class="section-label">02 / Skills</div><h2>Tools I work with</h2>
-      <div class="tech-orbit" aria-label="Technology highlights"><span class="tech-chip chip-python"><b>Py</b> Python</span><span class="tech-chip chip-java"><b>Ja</b> Java</span><span class="tech-chip chip-web"><b>JS</b> JavaScript</span><span class="tech-chip chip-data"><b>SQL</b> Databases</span><span class="tech-chip chip-ai"><b>AI</b> Machine Learning</span></div>
+      <div class="tech-orbit" aria-label="Technology highlights">
+        <span class="tech-chip chip-python"><b aria-hidden="true">Py</b> Python</span>
+        <span class="tech-chip chip-java"><b aria-hidden="true">Ja</b> Java</span>
+        <span class="tech-chip chip-web"><b aria-hidden="true">JS</b> JavaScript</span>
+        <span class="tech-chip chip-data"><b aria-hidden="true">SQL</b> Databases</span>
+        <span class="tech-chip chip-ai"><b aria-hidden="true">AI</b> Machine Learning</span>
+        <span class="tech-chip chip-html"><b aria-hidden="true">5</b> HTML</span>
+        <span class="tech-chip chip-mysql"><b aria-hidden="true">DB</b> MySQL</span>
+        <span class="tech-chip chip-pandas"><b aria-hidden="true">Pd</b> Pandas</span>
+        <span class="tech-chip chip-tensor"><b aria-hidden="true">TF</b> TensorFlow</span>
+      </div>
       <div class="grid skill-grid"><article class="card skill-card"><div class="skill-card-top"><span class="skill-symbol">&lt;/&gt;</span><span class="skill-caption">01 · CORE</span></div><h3>Programming</h3><div class="tags"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">C</span><span class="tag">C++</span><span class="tag">SQL</span></div></article>
       <article class="card skill-card"><div class="skill-card-top"><span class="skill-symbol">✳</span><span class="skill-caption">02 · FRONT END</span></div><h3>Web development</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
       <article class="card skill-card"><div class="skill-card-top"><span class="skill-symbol">▦</span><span class="skill-caption">03 · DATA</span></div><h3>Data & databases</h3><div class="tags"><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">NumPy</span><span class="tag">Pandas</span></div></article>
@@ -552,13 +608,13 @@
     <section id="contact" aria-labelledby="contact-title"><div class="wrap reveal"><div class="contact"><div class="section-label">06 / Contact</div><h2 id="contact-title">Let's connect.</h2><p class="intro">I'm open to meaningful conversations, learning opportunities and collaborations in technology.</p>
       <div class="contact-methods">
         <a class="contact-method" href="mailto:naveenkumar.domain@gmail.com" aria-label="Send an email to naveenkumar.domain@gmail.com">
-          <span class="contact-method-label">EMAIL</span><strong>naveenkumar.domain@gmail.com</strong><span class="contact-method-action">Send a message ↗</span>
+          <span class="contact-icon contact-icon-email" aria-hidden="true">✉</span><span class="contact-method-label">EMAIL</span><strong>naveenkumar.domain@gmail.com</strong><span class="contact-method-action">Send a message ↗</span>
         </a>
         <a class="contact-method" href="https://www.linkedin.com/in/naveen-infotech" target="_blank" rel="noopener noreferrer" aria-label="Open Naveenkumar's LinkedIn profile in a new tab">
-          <span class="contact-method-label">PROFESSIONAL NETWORK</span><strong>LinkedIn</strong><span class="contact-method-action">View profile ↗</span>
+          <span class="contact-icon contact-icon-linkedin" aria-hidden="true">in</span><span class="contact-method-label">PROFESSIONAL NETWORK</span><strong>LinkedIn</strong><span class="contact-method-action">View profile ↗</span>
         </a>
         <a class="contact-method" href="https://github.com/naveen-domain" target="_blank" rel="noopener noreferrer" aria-label="Open Naveenkumar's GitHub profile in a new tab">
-          <span class="contact-method-label">CODE & PROJECTS</span><strong>GitHub</strong><span class="contact-method-action">Explore repositories ↗</span>
+          <span class="contact-icon contact-icon-github" aria-hidden="true">&lt;/&gt;</span><span class="contact-method-label">CODE & PROJECTS</span><strong>GitHub</strong><span class="contact-method-action">Explore repositories ↗</span>
         </a>
       </div>
       <p class="contact-note">Email opens your default mail application. Social links open in a new tab.</p>
