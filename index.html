@@ -467,6 +467,27 @@
       .education-item,.contact-method::before{transition:none}
     }
 
+  
+    /* Project identity panels: visual labels, not simulated product screenshots */
+    .project-emblem{
+      display:flex;align-items:center;gap:18px;min-height:118px;
+      margin:0 0 22px;padding:22px;border:1px solid rgba(174,190,255,.18);
+      border-radius:15px;background:
+        radial-gradient(circle at 88% 18%,rgba(103,232,213,.12),transparent 38%),
+        linear-gradient(135deg,rgba(120,169,255,.10),rgba(12,21,40,.78));
+    }
+    .project-emblem-symbol{
+      display:grid;place-items:center;flex:0 0 58px;height:58px;
+      border:1px solid rgba(103,232,213,.28);border-radius:15px;
+      background:rgba(103,232,213,.08);color:var(--cyan);
+      font:700 1.8rem "Space Grotesk",sans-serif;
+    }
+    .project-emblem-copy{display:flex;flex-direction:column;gap:5px}
+    .project-emblem-copy strong{color:var(--text);font:600 .9rem "Space Grotesk",sans-serif;letter-spacing:.025em}
+    .project-emblem-copy small{color:var(--muted);font-size:.7rem;letter-spacing:.11em;text-transform:uppercase}
+    .sales-emblem .project-emblem-symbol{color:var(--violet);border-color:rgba(167,139,250,.3);background:rgba(167,139,250,.09)}
+    @media(max-width:700px){.project-emblem{min-height:100px;padding:17px;gap:14px}.project-emblem-symbol{flex-basis:52px;height:52px}}
+
   </style>
 </head>
 <body>
@@ -548,7 +569,10 @@
       <div class="grid project-grid">
         <article class="card project-card">
           <div class="project-heading"><span class="project-number">01</span><span class="project-type">Academic project</span></div>
-          <div class="project-visual inventory-visual" aria-label="Illustrative inventory dashboard preview"><div class="preview-top"><span class="preview-dots">● ● ●</span><span>SHOP / INVENTORY</span><span>•••</span></div><div class="preview-body"><div class="preview-sidebar"><i></i><i></i><i></i><i></i></div><div class="preview-main"><div class="preview-heading"><b>Overview</b><small>STORE DASHBOARD</small></div><div class="preview-stats"><span><small>PROJECT AREA</small><b>Products</b></span><span><small>WORKFLOW</small><b>Stock</b></span></div><div class="preview-table"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div><div class="preview-caption">ILLUSTRATIVE PROJECT VISUAL</div></div>
+          <div class="project-emblem inventory-emblem" aria-hidden="true">
+            <span class="project-emblem-symbol">▤</span>
+            <span class="project-emblem-copy"><strong>INVENTORY &amp; BILLING</strong><small>Academic project</small></span>
+          </div>
           <h3>Mobile Shop Management System</h3>
           <p>An academic project focused on organising mobile shop records and supporting day-to-day inventory and sales activities.</p>
           <div class="project-detail"><strong>Project focus</strong><span>Product records · Stock management · Billing workflow</span></div>
@@ -556,7 +580,10 @@
         </article>
         <article class="card project-card">
           <div class="project-heading"><span class="project-number">02</span><span class="project-type">Academic project</span></div>
-          <div class="project-visual sales-visual" aria-label="Illustrative sales trend chart preview"><div class="preview-top"><span class="preview-dots">● ● ●</span><span>DATA / ANALYTICS</span><span>•••</span></div><div class="sales-preview-body"><div class="preview-heading"><b>Sales trends</b><small>HISTORICAL DATA</small></div><div class="sales-metrics"><span><small>ANALYSIS</small><b>Trend view</b></span><span><small>OUTPUT</small><b>Forecast</b></span></div><svg class="sales-chart" viewBox="0 0 420 118" role="img" aria-label="Decorative rising trend line"><defs><linearGradient id="salesFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#67e8d5" stop-opacity=".35"/><stop offset="1" stop-color="#67e8d5" stop-opacity="0"/></linearGradient></defs><path d="M0 94 C35 84 42 90 75 70 S120 79 151 55 S200 68 230 43 S275 54 310 28 S365 35 420 8 L420 118 L0 118Z" fill="url(#salesFill)"/><path d="M0 94 C35 84 42 90 75 70 S120 79 151 55 S200 68 230 43 S275 54 310 28 S365 35 420 8" fill="none" stroke="#67e8d5" stroke-width="3" stroke-linecap="round"/></svg></div><div class="preview-caption">ILLUSTRATIVE VISUAL · NOT ACTUAL PROJECT OUTPUT</div></div>
+          <div class="project-emblem sales-emblem" aria-hidden="true">
+            <span class="project-emblem-symbol">∿</span>
+            <span class="project-emblem-copy"><strong>DATA &amp; FORECASTING</strong><small>Academic project</small></span>
+          </div>
           <h3>Sales Forecasting Model</h3>
           <p>An academic project exploring historical sales information to identify patterns and estimate possible future sales trends.</p>
           <div class="project-detail"><strong>Project focus</strong><span>Data exploration · Trend analysis · Visualisation</span></div>
