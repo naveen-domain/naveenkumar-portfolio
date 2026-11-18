@@ -82,8 +82,8 @@
     .btn{transition:transform .2s,box-shadow .2s,border-color .2s}
     .btn:hover{transform:translateY(-3px);box-shadow:0 9px 24px rgba(55,155,220,.18);border-color:rgba(113,226,224,.6)}
     .primary:hover{box-shadow:0 9px 28px rgba(54,191,192,.25)}
-    .back-top{position:fixed;right:22px;bottom:22px;z-index:35;width:44px;height:44px;border-radius:50%;border:1px solid rgba(113,226,224,.45);background:rgba(16,26,43,.88);color:var(--cyan);font-size:1.2rem;cursor:pointer;opacity:0;transform:translateY(12px);pointer-events:none;transition:.25s;backdrop-filter:blur(10px)}
-    .back-top.show{opacity:1;transform:none;pointer-events:auto}
+    .back-top{position:fixed;right:22px;bottom:22px;z-index:35;width:44px;height:44px;border-radius:50%;border:1px solid rgba(113,226,224,.45);background:rgba(16,26,43,.88);color:var(--cyan);font-size:1.2rem;cursor:pointer;opacity:0;transform:translateY(12px);pointer-events:none;visibility:hidden;transition:opacity .25s,transform .25s,visibility 0s linear .25s;backdrop-filter:blur(10px)}
+    .back-top.show{opacity:1;transform:none;pointer-events:auto;visibility:visible;transition:opacity .25s,transform .25s,visibility 0s}
     .ticker:hover .ticker-track{animation-play-state:paused}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 
