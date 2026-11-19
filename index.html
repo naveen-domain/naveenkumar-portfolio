@@ -760,17 +760,23 @@
       starGeo.setAttribute('position',new THREE.Float32BufferAttribute(starPositions,3));
       scene.add(new THREE.Points(starGeo,new THREE.PointsMaterial({color:0x9bbcff,size:.018,transparent:true,opacity:.7})));
       let pointerX=0,pointerY=0,frame=0;
-      const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      canvas.addEventListener('pointermove',e=>{const r=canvas.getBoundingClientRect();pointerX=((e.clientX-r.left)/r.width-.5)*.45;pointerY=((e.clientY-r.top)/r.height-.5)*.24});
+      const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
+      let isInView=!('IntersectionObserver' in window);
+      let animationId=null;
+      canvas.addEventListener('pointermove',e=>{const r=canvas.getBoundingClientRect();pointerX=((e.clientX-r.left)/r.width-.5)*.45;pointerY=((e.clientY-r.top)/r.height-.5)*.24},{passive:true});
       function resize(){
         const r=canvas.getBoundingClientRect();
         renderer.setSize(Math.max(1,r.width),Math.max(1,r.height),false);
         camera.aspect=r.width/Math.max(1,r.height);camera.updateProjectionMatrix();
-        if(reduced)renderer.render(scene,camera);
+        if(motionPreference.matches&&isInView&&!document.hidden)renderer.render(scene,camera);
       }
       resize();new ResizeObserver(resize).observe(canvas);
+      function stopAnimation(){
+        if(animationId!==null){cancelAnimationFrame(animationId);animationId=null}
+      }
       function animate(){
-        if(!canvas.isConnected)return;
+        animationId=null;
+        if(!canvas.isConnected||document.hidden||!isInView||motionPreference.matches)return;
         frame+=.008;
         avatar.rotation.y+=(pointerX+Math.sin(frame)*.12-avatar.rotation.y)*.035;
         avatar.rotation.x+=(-pointerY+Math.sin(frame*.7)*.025-avatar.rotation.x)*.035;
@@ -781,9 +787,24 @@
         eyeWhites.forEach(eye=>{eye.scale.y=.13*(1-.94*blink)});
         eyeIris.forEach(eye=>{eye.scale.y=.09*(1-.94*blink)});
         ring.rotation.z+=.0018;ring2.rotation.z-=.0012;
-        renderer.render(scene,camera);requestAnimationFrame(animate);
+        renderer.render(scene,camera);
+        animationId=requestAnimationFrame(animate);
       }
-      if(reduced){renderer.render(scene,camera)}else{animate()}
+      function syncAnimation(){
+        if(document.hidden||!isInView){stopAnimation();return}
+        if(motionPreference.matches){stopAnimation();renderer.render(scene,camera);return}
+        if(animationId===null)animationId=requestAnimationFrame(animate);
+      }
+      if('IntersectionObserver' in window){
+        const visibilityObserver=new IntersectionObserver(entries=>{
+          isInView=entries.some(entry=>entry.isIntersecting);
+          syncAnimation();
+        },{threshold:0.01,rootMargin:'80px'});
+        visibilityObserver.observe(canvas);
+      }
+      document.addEventListener('visibilitychange',syncAnimation);
+      motionPreference.addEventListener?.('change',syncAnimation);
+      syncAnimation();
     } catch(error) {
       canvas.style.display='none';
       fallback.style.display='block';
