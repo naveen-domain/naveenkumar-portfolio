@@ -488,6 +488,24 @@
     .sales-emblem .project-emblem-symbol{color:var(--violet);border-color:rgba(167,139,250,.3);background:rgba(167,139,250,.09)}
     @media(max-width:700px){.project-emblem{min-height:100px;padding:17px;gap:14px}.project-emblem-symbol{flex-basis:52px;height:52px}}
 
+
+    /* Mobile navigation: provide comfortable touch targets without changing desktop layout. */
+    @media(max-width:700px){
+      .menu{
+        min-width:44px;
+        min-height:44px;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+      }
+      .links a{
+        display:flex;
+        align-items:center;
+        width:100%;
+        min-height:44px;
+      }
+    }
+
   </style>
 </head>
 <body>
