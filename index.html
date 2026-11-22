@@ -74,6 +74,30 @@ footer{scroll-snap-align:end}
 .footer-contacts a:hover{text-decoration:underline}
 @media(max-width:650px){.footer-inner{align-items:flex-start;flex-direction:column}.footer-contacts{gap:1rem;flex-wrap:wrap}}
 </style>
+<style>
+.education-showcase{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,7vw,6rem);align-items:center;margin-top:clamp(2.5rem,6vw,4.5rem);padding:clamp(1.5rem,4vw,3.5rem);border-radius:26px;background:linear-gradient(125deg,rgba(255,255,255,.72),rgba(255,255,255,.35));border:1px solid rgba(255,255,255,.75);box-shadow:0 20px 55px rgba(45,65,55,.06)}
+.education-intro{position:relative;min-height:260px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.education-overline{font-size:.7rem;letter-spacing:.2em;font-weight:700;color:var(--teal)}
+.education-intro h3{max-width:320px;margin:1rem 0 .7rem;font:600 clamp(1.8rem,3.5vw,2.7rem)/1.12 var(--serif);color:var(--ink)}
+.education-intro p{max-width:330px;color:var(--muted);line-height:1.75;margin:0}
+.education-stamp{display:flex;align-items:center;gap:.7rem;margin-top:2rem;color:var(--teal)}
+.education-stamp span{font:600 3.3rem/.9 var(--serif)}.education-stamp small{font-size:.62rem;letter-spacing:.13em;font-weight:700;line-height:1.5}
+.education-timeline{position:relative;padding-left:2rem}
+.education-timeline:before{content:"";position:absolute;left:7px;top:12px;bottom:18px;width:1px;background:linear-gradient(var(--teal),#c6b9a2)}
+.education-entry{position:relative;padding:0 0 2.5rem 1.5rem}.education-entry:last-child{padding-bottom:0}
+.education-marker{position:absolute;left:-2rem;top:4px;width:15px;height:15px;border:2px solid var(--teal);border-radius:50%;background:#f5f1e8;display:grid;place-items:center}
+.education-entry.current .education-marker{background:var(--teal);box-shadow:0 0 0 5px rgba(57,123,112,.12)}
+.education-entry-top{display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap}
+.education-entry .edu-date{font-size:.72rem;letter-spacing:.1em;font-weight:700;color:var(--muted)}
+.edu-status{font-size:.62rem;letter-spacing:.1em;font-weight:700;padding:.35rem .6rem;border-radius:999px;background:rgba(57,123,112,.12);color:var(--teal)}
+.edu-status.completed{background:rgba(110,125,112,.12);color:#68796d}
+.education-entry h4{font:600 clamp(1.5rem,2.6vw,2rem) var(--serif);margin:.9rem 0 .1rem;color:var(--ink)}
+.education-entry h5{font:600 1rem var(--sans);margin:0;color:var(--teal)}
+.education-entry p{margin:.55rem 0 0;color:var(--muted)}
+.education-level{display:inline-block;margin-top:.9rem;font-size:.62rem;letter-spacing:.15em;font-weight:700;color:#8a928b}
+@media(max-width:760px){.education-showcase{grid-template-columns:1fr;gap:2rem}.education-intro{min-height:0}.education-stamp{margin-top:1rem}}
+@media(prefers-reduced-motion:reduce){.education-showcase *{scroll-behavior:auto}}
+</style>
 </head>
 <body>
 <div class="page-progress" id="pageProgress" aria-hidden="true"></div>
@@ -81,7 +105,16 @@ footer{scroll-snap-align:end}
 <header><nav class="wrap" aria-label="Main navigation"><a class="brand" href="#home">N<span>K</span>.</a><button class="menu" id="menu" aria-expanded="false" aria-controls="navlinks" aria-label="Open navigation">☰</button><div class="navlinks" id="navlinks"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#interests">Interests</a><a href="#certifications">Learning</a><a href="#contact">Contact</a></div></nav></header>
 <main id="main">
 <section class="hero" id="home"><div class="wrap hero-inner"><div class="overline">A Computer Science learning journey</div><h1>Hi, I'm<br><span>Naveenkumar.</span></h1><p class="hero-sub">M.Sc. Computer Science Postgraduate</p><p class="hero-copy">Exploring programming, artificial intelligence, machine learning, data science and emerging technologies through study, practice and academic projects.</p><div class="hero-rule" aria-hidden="true"></div></div></section>
-<section class="about" id="about"><div class="wrap"><div class="section-head"><div class="kicker">01 / About</div><h2>Learning with curiosity.</h2><p class="lead">I’m pursuing an M.Sc. in Computer Science at Dr. N.G.P. Arts and Science College, after completing my B.Sc. in Information Technology at Gobi Arts and Science College. I’m interested in understanding how technology works and continuing to build my knowledge across computer science and emerging fields.</p></div><div class="about-layout"><div class="education"><div class="kicker">Academic journey</div><h3>Education</h3><div class="edu-item"><div class="edu-date">July 2025 – May 2027 · In progress</div><h4>M.Sc. Computer Science</h4><p>Dr. N.G.P. Arts and Science College</p></div><div class="edu-item"><div class="edu-date">July 2022 – May 2025 · Completed</div><h4>B.Sc. Information Technology</h4><p>Gobi Arts and Science College</p></div></div><aside class="about-note"><div class="kicker">A curious approach</div><h3>What keeps me learning</h3><p>I enjoy understanding how technology works, practising what I learn, and exploring how programming, data and intelligent systems connect to real-world ideas.</p></aside></div></div></section>
+<section class="about" id="about"><div class="wrap">
+ <div class="section-head"><div class="kicker">01 / About & education</div><h2>My academic journey.</h2><p class="lead">I’m building my foundation in computer science through postgraduate study, with an undergraduate background in Information Technology. Each stage has helped me explore technology, strengthen my fundamentals and discover new areas to learn.</p></div>
+ <div class="education-showcase">
+  <div class="education-intro"><span class="education-overline">EDUCATION</span><h3>Learning, one step at a time.</h3><p>My academic path so far — from Information Technology to advanced study in Computer Science.</p><div class="education-stamp"><span>2</span><small>ACADEMIC<br>QUALIFICATIONS</small></div></div>
+  <div class="education-timeline">
+   <article class="education-entry current"><div class="education-marker"><span></span></div><div class="education-entry-top"><span class="edu-date">JUL 2025 — MAY 2027</span><span class="edu-status">IN PROGRESS</span></div><h4>Master of Science</h4><h5>Computer Science</h5><p>Dr. N.G.P. Arts and Science College</p><span class="education-level">POSTGRADUATE</span></article>
+   <article class="education-entry"><div class="education-marker"><span></span></div><div class="education-entry-top"><span class="edu-date">JUL 2022 — MAY 2025</span><span class="edu-status completed">COMPLETED</span></div><h4>Bachelor of Science</h4><h5>Information Technology</h5><p>Gobi Arts and Science College</p><span class="education-level">UNDERGRADUATE</span></article>
+  </div>
+ </div>
+</div></section>
 <section class="skills" id="skills"><div class="wrap"><div class="section-head"><div class="kicker">02 / Skills</div><h2>A growing technical toolkit.</h2><p class="lead">Technologies and concepts I have studied, practised or used in academic work. I’m continuing to develop these skills.</p></div><div class="skill-grid"><article class="skill-card"><h3>Programming</h3><p>Languages and database querying.</p><div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">SQL</span></div></article><article class="skill-card"><h3>Web fundamentals</h3><p>Core technologies for web pages.</p><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div></article><article class="skill-card"><h3>Data &amp; AI exploration</h3><p>Areas of ongoing learning and academic interest.</p><div class="chips"><span class="chip">Data Science</span><span class="chip">AI</span><span class="chip">Machine Learning</span></div></article></div></div></section>
 <section class="projects" id="projects"><div class="wrap">
  <div class="section-head"><div class="kicker">03 / Academic work</div><h2>Projects from my learning journey.</h2><p class="lead">Academic projects where I explored how computer science concepts can be applied to practical problems.</p></div>
