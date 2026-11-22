@@ -506,6 +506,49 @@
       }
     }
 
+
+    /* Step 20: small-screen layout safeguards */
+    @media(max-width:700px){
+      .hero-layout > *,
+      .grid > *,
+      .project-grid > *,
+      .certification-grid > *,
+      .contact-methods > * { min-width:0; }
+
+      .hero .eyebrow {
+        max-width:100%;
+        white-space:normal;
+        line-height:1.5;
+        letter-spacing:.12em;
+      }
+
+      .hero h1 {
+        font-size:clamp(2.55rem,12vw,4rem);
+        line-height:1.04;
+        overflow-wrap:anywhere;
+      }
+
+      .hero h1 span { overflow-wrap:anywhere; }
+
+      .actions .btn {
+        min-height:44px;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+      }
+
+      .project-card,
+      .certification-card,
+      .contact-method { overflow-wrap:anywhere; }
+    }
+
+    @media(max-width:380px){
+      .wrap { width:calc(100% - 32px); }
+      .hero .actions { gap:9px; }
+      .hero .actions .btn { padding:10px 13px; font-size:.9rem; }
+      .avatar-label { font-size:.58rem; padding:8px 10px; }
+    }
+
   </style>
 </head>
 <body>
