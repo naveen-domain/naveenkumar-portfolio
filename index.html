@@ -50,6 +50,29 @@ footer{scroll-snap-align:end}
   html{scroll-snap-type:y proximity}
 }
 </style>
+
+<style>
+/* Cinematic chapter identities: each scroll-stop has its own atmosphere. */
+main>section:not(.hero){position:relative;isolation:isolate;overflow:hidden;padding-block:clamp(5rem,10vh,8rem);scroll-margin-top:0}
+main>section:not(.hero)::before{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;opacity:.8;background:radial-gradient(ellipse at 12% 18%,rgba(255,255,255,.72),transparent 38%),radial-gradient(ellipse at 88% 82%,rgba(255,255,255,.42),transparent 34%)}
+.about{background:linear-gradient(130deg,#f3ead9 0%,#e5e9dc 55%,#dce9e4 100%)}
+.skills{background:linear-gradient(145deg,#dbe8e4 0%,#edf0e8 52%,#d6e3e8 100%)}
+.projects{background:linear-gradient(125deg,#f1e1d8 0%,#f4eee2 50%,#e8e1d5 100%)}
+.interests{background:linear-gradient(135deg,#dce4ef 0%,#e8e9e1 52%,#e4dce9 100%)}
+.certifications{background:linear-gradient(135deg,#eee5cf 0%,#e8e8dc 55%,#dce8e1 100%)}
+.contact{background:linear-gradient(135deg,#d8e7df 0%,#e8ece2 48%,#dce5ed 100%)}
+main>section:not(.hero)::after{content:"";position:absolute;z-index:-1;width:min(44vw,560px);aspect-ratio:1;border:1px solid rgba(54,88,83,.12);border-radius:50%;right:-13%;top:-20%;box-shadow:0 0 0 38px rgba(255,255,255,.07),0 0 0 90px rgba(255,255,255,.05);animation:chapterDrift 18s ease-in-out infinite alternate}
+@keyframes chapterDrift{from{transform:translate3d(0,-1.5%,0) rotate(-5deg)}to{transform:translate3d(-2%,3%,0) rotate(8deg)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+.contact-link,.skill-card,.project-card,.interest-item{transition:transform .35s ease,box-shadow .35s ease}
+.contact-link:hover,.skill-card:hover,.project-card:hover,.interest-item:hover{transform:translateY(-5px)}
+html{scroll-behavior:smooth;scroll-snap-type:y mandatory}
+main>section{scroll-snap-align:start;scroll-snap-stop:always}
+@media(max-width:760px){html{scroll-snap-type:y proximity}main>section:not(.hero){padding-block:5rem}main>section{scroll-snap-stop:normal}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;scroll-snap-type:y proximity}main>section:not(.hero)::after{animation:none}.reveal{opacity:1;transform:none;transition:none}.contact-link,.skill-card,.project-card,.interest-item{transition:none}}
+</style>
+
 </head>
 <body>
 <div class="page-progress" id="pageProgress" aria-hidden="true"></div>
