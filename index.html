@@ -288,6 +288,25 @@ section h2{max-width:760px;font:500 clamp(2.1rem,4vw,3.25rem)/1.12 Georgia,serif
  #contact .contact-methods{grid-template-columns:1fr}
 }
 
+
+/* Minimal scenic introduction */
+.simple-hero-layout{display:grid;grid-template-columns:1.2fr .65fr;align-items:center;gap:clamp(28px,6vw,80px);max-width:1050px;text-align:left}
+.simple-hero-text{max-width:680px}
+.scenic-hero h1{margin:0 0 20px;font-size:clamp(3.6rem,8vw,6.5rem)}
+.scenic-subtitle{margin:0 0 10px!important;font-size:clamp(1.05rem,2vw,1.3rem)!important}
+.scenic-copy{margin:0!important;max-width:540px;font-size:1rem!important}
+.scenic-actions{justify-content:flex-start;margin-top:26px}
+.hero-portrait{display:block;width:min(100%,290px);aspect-ratio:4/5;object-fit:cover;object-position:center 25%;justify-self:center;border:7px solid rgba(255,255,255,.82);box-shadow:0 18px 50px rgba(0,0,0,.24);border-radius:48% 48% 5px 5px}
+.photo-credit,.scroll-cue,.scenic-welcome,.scenic-hero .eyebrow{display:none!important}
+@media(max-width:700px){
+ .simple-hero-layout{grid-template-columns:1fr;gap:25px;text-align:center}
+ .simple-hero-text{order:1}
+ .hero-portrait{order:0;width:150px;justify-self:center;border-width:5px}
+ .scenic-hero h1{font-size:clamp(3.1rem,13vw,4.6rem);margin-bottom:14px}
+ .scenic-actions{justify-content:center}
+ .scenic-actions .btn{flex:0 1 auto;min-width:130px}
+}
+
 </style>
 </head>
 <body>
@@ -297,22 +316,20 @@ section h2{max-width:760px;font:500 clamp(2.1rem,4vw,3.25rem)/1.12 Georgia,serif
   </nav></header>
   <main id="main-content" tabindex="-1">
     <section class="hero scenic-hero" id="home" aria-label="Introduction">
-      <div class="scenic-shade" aria-hidden="true"></div>
-      <div class="wrap scenic-content">
-        <p class="scenic-welcome">Welcome to my portfolio</p>
-        <p class="eyebrow">M.Sc. Computer Science Student <span>·</span> Fresher</p>
-        <h1>Hi, I'm<br><span>Naveenkumar.</span></h1>
-        <p class="scenic-subtitle">Computer Science Postgraduate | Exploring Programming, AI/ML &amp; Data Science</p>
-        <p class="scenic-copy">I’m building my foundations in software and web technologies while exploring data, intelligent systems and emerging technologies through study, independent learning and academic projects.</p>
-        <div class="actions scenic-actions">
-          <a class="btn primary" href="#projects">Explore my projects <span aria-hidden="true">↓</span></a>
-          <a class="btn scenic-outline" href="#contact">Get in touch</a>
-          <a class="btn scenic-outline" href="Naveenkumar_Resume.pdf" target="_blank" rel="noopener noreferrer">View resume ↗</a>
-        </div>
-        <a class="scroll-cue" href="#about"><span aria-hidden="true">↓</span> Scroll to explore</a>
-        <p class="photo-credit">Mountain landscape photo by Bobby on Unsplash</p>
+  <div class="scenic-shade" aria-hidden="true"></div>
+  <div class="wrap scenic-content simple-hero-layout">
+    <div class="simple-hero-text">
+      <h1>Hi, I'm<br><span>Naveenkumar.</span></h1>
+      <p class="scenic-subtitle">Computer Science Postgraduate</p>
+      <p class="scenic-copy">Exploring software development, AI and data through learning and academic projects.</p>
+      <div class="actions scenic-actions">
+        <a class="btn primary" href="#projects">Explore my work</a>
+        <a class="btn scenic-outline" href="#contact">Contact me</a>
       </div>
-    </section>
+    </div>
+    <img class="hero-portrait" src="naveen-profile.jpg" alt="Portrait of Naveenkumar">
+  </div>
+</section>
     <section id="about"><div class="wrap"><p class="section-label">About</p><h2>A little about me.</h2>
 <p class="intro">I’m a Computer Science postgraduate at Dr. N.G.P. Arts and Science College, with a background in Information Technology. I enjoy learning by building, exploring new ideas and strengthening my technical foundations.</p>
 <div class="simple-education"><div><span class="simple-label">Currently pursuing</span><h3>M.Sc. Computer Science</h3><p>Dr. N.G.P. Arts and Science College</p></div><div><span class="simple-label">Undergraduate</span><h3>B.Sc. Information Technology</h3><p>Gobi Arts and Science College</p></div></div></div></section>
