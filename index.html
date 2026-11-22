@@ -251,6 +251,43 @@ section:not(.hero){scroll-margin-top:20px}
 }
 @media(prefers-reduced-motion:reduce){.scenic-hero{background-attachment:scroll}}
 
+
+/* Simple, editorial content layout */
+body{font-family:"DM Sans",Arial,sans-serif}
+section:not(.hero){padding:76px 0}
+#about{background:#f5f1e8}
+#skills{background:#e8eee8}
+#projects{background:#f5f1e8}
+#interests{background:#e9edf1}
+#certifications{background:#f5f1e8}
+#contact{background:#e8eee8}
+.section-label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:#397b70;font-weight:700}
+section h2{max-width:760px;font:500 clamp(2.1rem,4vw,3.25rem)/1.12 Georgia,serif;letter-spacing:-.035em;color:#26343a;margin:12px 0 20px}
+.intro{max-width:740px;font-size:1.03rem;line-height:1.85;color:#59676a}
+.simple-education,.simple-skills,.simple-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:30px}
+.simple-education>div,.simple-skills>div,.simple-projects>article{padding:24px 26px;background:rgba(255,255,255,.58);border:1px solid #d9ded5;border-radius:3px}
+.simple-education h3,.simple-skills h3,.simple-projects h3{font:600 1.2rem/1.3 "DM Sans",Arial,sans-serif;margin:9px 0;color:#26343a}
+.simple-education p,.simple-skills p,.simple-projects p{margin:0;color:#647176;line-height:1.75}
+.simple-label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#397b70;font-weight:700}
+.simple-projects{grid-template-columns:repeat(2,minmax(0,1fr))}
+.simple-projects article{background:#e5eee8}
+.simple-projects article:nth-child(2){background:#f3e5d9}
+.simple-projects p{margin-top:10px}
+.simple-certifications{max-width:780px;margin-top:24px;border-top:1px solid #d9ded5}
+.simple-certifications p{display:flex;justify-content:space-between;gap:18px;margin:0;padding:16px 4px;border-bottom:1px solid #d9ded5}
+.simple-certifications strong{font-weight:600;color:#26343a}
+.simple-certifications span{color:#647176;text-align:right}
+#contact .contact{max-width:900px;margin:auto;box-shadow:none}
+#contact .contact-methods{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:700px){
+ section:not(.hero){padding:58px 0}
+ .simple-education,.simple-skills,.simple-projects{grid-template-columns:1fr;gap:12px}
+ .simple-education>div,.simple-skills>div,.simple-projects>article{padding:20px}
+ .simple-certifications p{flex-direction:column;gap:3px}
+ .simple-certifications span{text-align:left}
+ #contact .contact-methods{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
@@ -276,128 +313,18 @@ section:not(.hero){scroll-margin-top:20px}
         <p class="photo-credit">Mountain landscape photo by Bobby on Unsplash</p>
       </div>
     </section>
-    <section id="about"><div class="wrap reveal"><div class="section-label">01 / About</div><h2>Curious mind. Practical approach.</h2>
-      <p class="intro">I am pursuing an M.Sc. in Computer Science at Dr. N.G.P. Arts and Science College, Coimbatore, after completing my B.Sc. in Information Technology at Gobi Arts and Science College. I enjoy learning how technology works and applying that knowledge through projects and continuous practice.</p>
-      <div class="grid about-grid" style="margin-top:25px">
-        <article class="card education-card">
-          <div class="education-heading"><div><span class="education-kicker">ACADEMIC JOURNEY</span><h3>Education</h3></div><span class="education-count">03 · QUALIFICATIONS</span></div>
-          <ol class="education-timeline" aria-label="Academic history">
-            <li class="education-item">
-              <span class="education-period"><span class="education-period-dot" aria-hidden="true"></span>Jul 2025 – May 2027 · In progress</span>
-              <span class="education-degree-mark" aria-hidden="true">M.Sc</span>
-              <h4>M.Sc. Computer Science</h4>
-              <p>Dr. N.G.P. Arts and Science College</p>
-              <span class="education-status">Currently pursuing</span>
-            </li>
-            <li class="education-item">
-              <span class="education-period"><span class="education-period-dot" aria-hidden="true"></span>Sep 2025 – Feb 2026 · Completed</span>
-              <span class="education-degree-mark" aria-hidden="true">DWD</span>
-              <h4>Diploma in Web Designing</h4>
-              <p>Bharathiar University</p>
-              <span class="education-status">Diploma programme</span>
-            </li>
-            <li class="education-item">
-              <span class="education-period"><span class="education-period-dot" aria-hidden="true"></span>Jul 2022 – May 2025 · Completed</span>
-              <span class="education-degree-mark" aria-hidden="true">B.Sc</span>
-              <h4>B.Sc. Information Technology</h4>
-              <p>Gobi Arts and Science College</p>
-              <span class="education-status">Undergraduate degree</span>
-            </li>
-          </ol>
-        </article>
-        <article class="card">
-          <h3>What drives me</h3>
-          <p>Learning by building, improving problem-solving skills, collaborating with others and exploring the intersection of software, data and AI.</p>
-        </article>
-      </div>
-    </div></section>
-    <section id="skills"><div class="wrap reveal"><div class="section-label">02 / Skills</div><h2>Tools I work with</h2>
-      <div class="tech-orbit" aria-label="Technology highlights">
-        <span class="tech-chip chip-python"><b aria-hidden="true">Py</b> Python</span>
-        <span class="tech-chip chip-java"><b aria-hidden="true">Ja</b> Java</span>
-        <span class="tech-chip chip-web"><b aria-hidden="true">JS</b> JavaScript</span>
-        <span class="tech-chip chip-data"><b aria-hidden="true">SQL</b> Databases</span>
-        <span class="tech-chip chip-ai"><b aria-hidden="true">AI</b> Machine Learning</span>
-        <span class="tech-chip chip-html"><b aria-hidden="true">5</b> HTML</span>
-        <span class="tech-chip chip-mysql"><b aria-hidden="true">DB</b> MySQL</span>
-        <span class="tech-chip chip-pandas"><b aria-hidden="true">Pd</b> Pandas</span>
-        <span class="tech-chip chip-tensor"><b aria-hidden="true">TF</b> TensorFlow</span>
-      </div>
-      <div class="grid skill-grid"><article class="card skill-card"><div class="skill-card-top"><span class="skill-symbol">&lt;/&gt;</span><span class="skill-caption">01 · CORE</span></div><h3>Programming</h3><div class="tags"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">C</span><span class="tag">C++</span><span class="tag">SQL</span></div></article>
-      <article class="card skill-card"><div class="skill-card-top"><span class="skill-symbol">✳</span><span class="skill-caption">02 · FRONT END</span></div><h3>Web development</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
-      <article class="card skill-card"><div class="skill-card-top"><span class="skill-symbol">▦</span><span class="skill-caption">03 · DATA</span></div><h3>Data & databases</h3><div class="tags"><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">NumPy</span><span class="tag">Pandas</span></div></article>
-      <article class="card skill-card"><div class="skill-card-top"><span class="skill-symbol">⌘</span><span class="skill-caption">04 · TOOLKIT</span></div><h3>Tools & frameworks</h3><div class="tags"><span class="tag">VS Code</span><span class="tag">IntelliJ IDEA</span><span class="tag">Spyder</span><span class="tag">TensorFlow</span><span class="tag">Keras</span></div></article></div>
-    </div></section>
-    <section id="projects"><div class="wrap reveal"><div class="section-label">03 / Projects</div><h2>Learning through building</h2>
-      <p class="intro project-intro">A selection of academic work that reflects how I apply classroom learning to practical problem areas.</p>
-      <div class="grid project-grid">
-        <article class="card project-card">
-          <div class="project-heading"><span class="project-number">01</span><span class="project-type">Academic project</span></div>
-          <div class="project-emblem inventory-emblem" aria-hidden="true">
-            <span class="project-emblem-symbol">▤</span>
-            <span class="project-emblem-copy"><strong>INVENTORY &amp; BILLING</strong><small>Academic project</small></span>
-          </div>
-          <h3>Mobile Shop Management System</h3>
-          <p>An academic project focused on organising mobile shop records and supporting day-to-day inventory and sales activities.</p>
-          <div class="project-detail"><strong>Project focus</strong><span>Product records · Stock management · Billing workflow</span></div>
-          <div class="tags" aria-label="Project areas"><span class="tag">Product records</span><span class="tag">Stock tracking</span><span class="tag">Billing workflow</span></div>
-        </article>
-        <article class="card project-card">
-          <div class="project-heading"><span class="project-number">02</span><span class="project-type">Academic project</span></div>
-          <div class="project-emblem sales-emblem" aria-hidden="true">
-            <span class="project-emblem-symbol">∿</span>
-            <span class="project-emblem-copy"><strong>DATA &amp; FORECASTING</strong><small>Academic project</small></span>
-          </div>
-          <h3>Sales Forecasting Model</h3>
-          <p>An academic project exploring historical sales information to identify patterns and estimate possible future sales trends.</p>
-          <div class="project-detail"><strong>Project focus</strong><span>Data exploration · Trend analysis · Visualisation</span></div>
-          <div class="tags" aria-label="Project areas"><span class="tag">Historical data</span><span class="tag">Trend analysis</span><span class="tag">Forecasting</span><span class="tag">Visualisation</span></div>
-        </article>
-      </div>
-      <p class="project-note">These are academic projects. The descriptions focus on their learning objectives, problem areas and tools rather than claiming production use or measured business results.</p>
-    </div></section>
-    <section id="interests" aria-labelledby="interests-title">
-    <div class="wrap reveal">
-      <div class="section-label">04 / Learning &amp; Research Interests</div>
-      <h2 id="interests-title">Curious about what’s next.</h2>
-      <p class="intro interests-intro">I’m continuing to build my computer science foundations through postgraduate study, independent learning and academic projects. These are areas I’m currently exploring.</p>
-      <div class="interest-grid">
-        <article class="interest">
-          <span class="interest-kicker">01 / Learning focus</span>
-          <h3>Programming &amp; Software Development</h3>
-          <p class="interest-copy">Strengthening my Python and Java foundations, practising problem-solving and developing web skills with HTML, CSS and JavaScript.</p>
-        </article>
-        <article class="interest">
-          <span class="interest-kicker">02 / Learning focus</span>
-          <h3>Artificial Intelligence &amp; Machine Learning</h3>
-          <p class="interest-copy">Exploring core AI and machine learning concepts and understanding how they can be applied to practical problems.</p>
-        </article>
-        <article class="interest">
-          <span class="interest-kicker">03 / Learning focus</span>
-          <h3>Data Science &amp; Analytics</h3>
-          <p class="interest-copy">Learning data preparation, exploratory analysis, visualisation and predictive modelling.</p>
-        </article>
-        <article class="interest">
-          <span class="interest-kicker">04 / Learning focus</span>
-          <h3>Emerging Technologies</h3>
-          <p class="interest-copy">Exploring cloud computing, distributed systems, the Internet of Things and modern computing infrastructure.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-    <section id="certifications"><div class="wrap reveal"><div class="section-label">05 / Certifications & learning</div><h2>Learning beyond the classroom</h2>
-      <p class="intro">A selection of courses, training programmes and hands-on learning activities completed alongside my studies.</p>
-      <div class="grid certification-grid" style="margin-top:25px">
-        <article class="card certification-card"><div class="cert-mark">HTML</div><h3>HTML</h3><p>Infosys · September 2024</p><small>Certificate</small></article>
-        <article class="card certification-card"><div class="cert-mark">AWS</div><h3>AWS Builders Online Series</h3><p>Amazon Web Services · July 2025</p><small>Online learning series</small></article>
-        <article class="card certification-card"><div class="cert-mark">JAVA</div><h3>Java Training</h3><p>IIT Bombay · September 2025</p><small>Training</small></article>
-        <article class="card certification-card"><div class="cert-mark">NPTEL</div><h3>Research Methodology</h3><p>NPTEL · July–September 2025</p><small>Course</small></article>
-        <article class="card certification-card"><div class="cert-mark">IoT</div><h3>IoT in Industry</h3><p>NYTT AB Sweden · February 2025</p><small>Hands-on learning</small></article>
-        <article class="card certification-card"><div class="cert-mark">YHE</div><h3>Yoga for Human Excellence</h3><p>March 2025</p><small>Certificate</small></article>
-        <article class="card certification-card"><div class="cert-mark">AI</div><h3>Introduction to Gen AI</h3><p>Google Cloud · Coursera · April 2026</p><small>Professional development</small></article>
-        <article class="card certification-card"><div class="cert-mark">PY</div><h3>Python Programming Fundamentals</h3><p>Microsoft · Coursera · April 2026</p><small>Professional development</small></article>
-      </div>
-    </div></section>
+    <section id="about"><div class="wrap"><p class="section-label">About</p><h2>A little about me.</h2>
+<p class="intro">I’m a Computer Science postgraduate at Dr. N.G.P. Arts and Science College, with a background in Information Technology. I enjoy learning by building, exploring new ideas and strengthening my technical foundations.</p>
+<div class="simple-education"><div><span class="simple-label">Currently pursuing</span><h3>M.Sc. Computer Science</h3><p>Dr. N.G.P. Arts and Science College</p></div><div><span class="simple-label">Undergraduate</span><h3>B.Sc. Information Technology</h3><p>Gobi Arts and Science College</p></div></div></div></section>
+    <section id="skills"><div class="wrap"><p class="section-label">Skills</p><h2>Technologies I’m learning and using.</h2>
+<p class="intro">A growing toolkit developed through coursework, practice and academic projects.</p>
+<div class="simple-skills"><div><h3>Programming</h3><p>Python · Java · SQL</p></div><div><h3>Web</h3><p>HTML · CSS · JavaScript</p></div><div><h3>Data &amp; AI/ML</h3><p>Data science fundamentals · AI/ML concepts</p></div><div><h3>Tools</h3><p>MySQL · MongoDB · VS Code</p></div></div></div></section>
+    <section id="projects"><div class="wrap"><p class="section-label">Selected work</p><h2>Academic projects.</h2>
+<div class="simple-projects"><article><span class="simple-label">01 / Academic project</span><h3>Mobile Shop Management System</h3><p>A project focused on organising product records, stock information and billing activities for a mobile shop.</p></article><article><span class="simple-label">02 / Academic project</span><h3>Sales Forecasting Model</h3><p>An academic exploration of historical sales data, patterns and possible future trends.</p></article></div></div></section>
+    <section id="interests"><div class="wrap"><p class="section-label">Interests</p><h2>What I’m curious about.</h2>
+<p class="intro">I’m continuing to explore programming and software development, artificial intelligence and machine learning, data science, cloud computing and emerging technologies.</p></div></section>
+    <section id="certifications"><div class="wrap"><p class="section-label">Learning</p><h2>Courses &amp; certifications.</h2>
+<div class="simple-certifications"><p><strong>HTML</strong><span>Infosys · 2024</span></p><p><strong>AWS Builders Online Series</strong><span>AWS · 2025</span></p><p><strong>Java Training</strong><span>IIT Bombay · 2025</span></p><p><strong>Research Methodology</strong><span>NPTEL · 2025</span></p><p><strong>IoT in Industry</strong><span>NYTT AB Sweden · 2025</span></p></div></div></section>
     <section id="contact" aria-labelledby="contact-title"><div class="wrap reveal"><div class="contact"><div class="section-label">06 / Contact</div><h2 id="contact-title">Let's connect.</h2><p class="intro">I'm open to meaningful conversations, learning opportunities and collaborations in technology.</p>
       <div class="contact-methods">
         <a class="contact-method" href="mailto:naveenkumar.domain@gmail.com" aria-label="Send an email to naveenkumar.domain@gmail.com">
@@ -433,22 +360,6 @@ section:not(.hero){scroll-margin-top:20px}
     });
     window.addEventListener('resize',()=>{if(window.innerWidth>700)setMenuOpen(false)});
     document.getElementById('year').textContent=new Date().getFullYear();
-    const roleText=document.getElementById('roleText');
-    const roles=['practising Python and Java','exploring AI and machine learning','learning data science','discovering emerging technologies'];
-    let roleIndex=0,roleTimer=null;
-    const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
-    function syncRoleRotation(){
-      if(roleTimer!==null){clearInterval(roleTimer);roleTimer=null}
-      if(roleText&&!motionPreference.matches){
-        roleTimer=window.setInterval(()=>{
-          roleIndex=(roleIndex+1)%roles.length;
-          roleText.animate([{opacity:0,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],{duration:450});
-          roleText.textContent=roles[roleIndex];
-        },2400);
-      }
-    }
-    syncRoleRotation();
-    motionPreference.addEventListener?.('change',syncRoleRotation);
     const backTop=document.getElementById('backTop');
     backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:motionPreference.matches?'auto':'smooth'}));
     window.addEventListener('scroll',()=>{backTop.classList.toggle('show',scrollY>500)},{passive:true});
