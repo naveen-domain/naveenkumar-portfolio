@@ -25,6 +25,21 @@ section{padding:88px 0}.page-progress{position:fixed;top:0;left:0;height:3px;wid
 footer{background:#243746;color:#e9e5dc;padding:28px 0;font-size:.86rem}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-inner a{color:#f0ce85}
 @media(max-width:760px){.page-chapter{min-height:auto}.wrap{width:min(100% - 34px,560px)}nav{height:68px}.menu{display:block}.navlinks{display:none;position:absolute;top:68px;left:0;right:0;padding:15px 24px 22px;background:#26394d;flex-direction:column;gap:6px}.navlinks.open{display:flex}.navlinks a{padding:9px 0}.hero{min-height:88svh;padding:115px 0 65px;background-position:58% center}.hero h1{font-size:clamp(3.3rem,14vw,5rem)}section{padding:65px 0}.about-layout,.skill-grid,.project-grid,.interest-layout,.contact-grid{grid-template-columns:1fr}.education,.about-note,.contact-box{padding:24px}.project-art{height:160px}.cert-row{flex-direction:column;gap:3px}.cert-row span{text-align:left}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*{animation:none!important;transition:none!important}}
+
+/* One-section-at-a-time scrolling */
+html{scroll-snap-type:y mandatory;scroll-padding-top:0}
+main>section{scroll-snap-align:start;scroll-snap-stop:always;min-height:100svh}
+.hero{min-height:100svh}
+.page-chapter{min-height:100svh}
+footer{scroll-snap-align:end}
+@media(max-width:760px){
+  html{scroll-snap-type:y proximity}
+  main>section{min-height:100svh;scroll-snap-stop:always}
+  .page-chapter{min-height:100svh}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-snap-type:y proximity}
+}
 </style>
 </head>
 <body>
