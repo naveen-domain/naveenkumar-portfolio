@@ -132,6 +132,12 @@ nav{border-bottom:0}
 @media(max-width:760px){.project-showcase{grid-template-columns:1fr;gap:22px}.project-showcase .project-art{min-height:245px}.project-showcase .project-content{padding:23px}.project-showcase .project-card:hover{transform:none;box-shadow:0 16px 42px rgba(38,52,58,.055)}}
 @media(prefers-reduced-motion:reduce){.project-showcase .project-card{transition:none}.project-showcase .project-card:hover{transform:none}}
 
+
+/* Clear keyboard focus for every interactive element */
+:where(a,button):focus-visible{outline:3px solid #397b70;outline-offset:4px;border-radius:2px}
+header :where(a,button):focus-visible{outline-color:#f0c975}
+.contact-link:focus-visible{outline:3px solid #397b70;outline-offset:4px;box-shadow:0 0 0 5px rgba(57,123,112,.12)}
+@media(prefers-reduced-motion:reduce){.contact-link:focus-visible{transform:none}}
 </style>
 
 
